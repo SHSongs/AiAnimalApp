@@ -53,36 +53,38 @@ x_test = x_test / 255.0
 y_train = tf.keras.utils.to_categorical(y_train)
 y_test = tf.keras.utils.to_categorical(y_test)
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3),
-                                  padding='same', activation='relu', input_shape=(224, 224, 1)),
-    tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
-    tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
-    tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
-                                 strides=(1, 1), padding='valid'),
-    tf.keras.layers.Convolution2D(filters=128, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
-    tf.keras.layers.Convolution2D(filters=128, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
-    tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
-                                 strides=(1, 1), padding='valid'),
-    tf.keras.layers.Convolution2D(filters=256, kernel_size=(3, 3), activation='relu'),
-    tf.keras.layers.Convolution2D(filters=256, kernel_size=(3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
-                                 strides=(1, 1), padding='valid'),
-
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(2, activation='softmax')
-])
-
-model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
-
-his = model.fit(x_train, y_train, epochs=100, batch_size=100)
-
-test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
-print(test_acc)
-
-model.save('./model/cat_dog_cnn')
-
-converter = tf.lite.TFLiteConverter.from_saved_model('./model/cat_dog_cnn')
-
-tflite_model = converter.convert()
-open("./liteModel/cat_dog_cnn.tflite", "wb").write(tflite_model)
+print(y_train)
+#
+# model = tf.keras.Sequential([
+#     tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3),
+#                                   padding='same', activation='relu', input_shape=(224, 224, 1)),
+#     tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
+#     tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
+#     tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
+#                                  strides=(1, 1), padding='valid'),
+#     tf.keras.layers.Convolution2D(filters=128, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
+#     tf.keras.layers.Convolution2D(filters=128, kernel_size=(3, 3), activation='relu', strides=(2, 2)),
+#     tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
+#                                  strides=(1, 1), padding='valid'),
+#     tf.keras.layers.Convolution2D(filters=256, kernel_size=(3, 3), activation='relu'),
+#     tf.keras.layers.Convolution2D(filters=256, kernel_size=(3, 3), activation='relu'),
+#     tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
+#                                  strides=(1, 1), padding='valid'),
+#
+#     tf.keras.layers.Flatten(),
+#     tf.keras.layers.Dense(2, activation='softmax')
+# ])
+#
+# model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
+#
+# his = model.fit(x_train, y_train, epochs=100, batch_size=100)
+#
+# test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
+# print(test_acc)
+#
+# model.save('./model/cat_dog_cnn')
+#
+# converter = tf.lite.TFLiteConverter.from_saved_model('./model/cat_dog_cnn')
+#
+# tflite_model = converter.convert()
+# open("./liteModel/cat_dog_cnn.tflite", "wb").write(tflite_model)
