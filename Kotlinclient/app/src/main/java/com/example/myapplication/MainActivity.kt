@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener { e -> Log.e(TAG, "Error to setting up digit classifier.", e) }
 
 
-        val bitmap = getAssetImage("zero.PNG")
+        val bitmap = getAssetImage("one.PNG")
 
         var predict: Int? = null
 

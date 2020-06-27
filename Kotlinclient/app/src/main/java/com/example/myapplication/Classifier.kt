@@ -78,22 +78,16 @@ class Classifier(private val context: Context) {
             throw IllegalStateException("TF Lite Interpreter is not initialized yet.")
         }
 
-        var startTime: Long
-        var elapsedTime: Long
 
-        // Preprocessing: resize the input
-        startTime = System.nanoTime()
         val resizedImage = Bitmap.createScaledBitmap(bitmap, inputImageWidth, inputImageHeight, true)
         val byteBuffer = convertBitmapToByteBuffer(resizedImage)
-        elapsedTime = (System.nanoTime() - startTime) / 1000000
-        Log.d(TAG, "Preprocessing time = " + elapsedTime + "ms")
 
-        startTime = System.nanoTime()
         val result = Array(1) { FloatArray(OUTPUT_CLASSES_COUNT) }
-        interpreter?.run(byteBuffer, result)
-        elapsedTime = (System.nanoTime() - startTime) / 1000000
-        Log.d(TAG, "Inference time = " + elapsedTime + "ms")
 
+        //using the interface
+        //give it the input name, raw pixels from the drawing,
+        //input size
+        interpreter?.run(byteBuffer, result)
         return getOutputString(result[0])
     }
 
