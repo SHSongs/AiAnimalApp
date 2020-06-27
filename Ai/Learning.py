@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 import numpy as np
-
+import random
 x_train = []
 y_train = []
 x_test = []
@@ -14,7 +14,7 @@ foldernames = os.listdir('../catdog/training_set/training_set')
 for k, folder in enumerate(foldernames):
     len = 0
     for c, file in enumerate(os.listdir('../catdog/training_set/training_set' + '/' + folder)):
-        if c > 100:
+        if c > 1500:
             len = c
             break
         img = cv2.imread('../catdog/training_set/training_set' + '/' + folder + '/' + file)
@@ -29,7 +29,7 @@ foldernames = os.listdir('../catdog/test_set/test_set')
 for k, folder in enumerate(foldernames):
     len = 0
     for c, file in enumerate(os.listdir('../catdog/test_set/test_set' + '/' + folder)):
-        if c > 50:
+        if c > 100:
             len = c
             break
         img = cv2.imread('../catdog/test_set/test_set' + '/' + folder + '/' + file)
@@ -44,8 +44,11 @@ y_train = np.array(y_train)
 x_test = np.array(x_test)
 y_test = np.array(y_test)
 
+
 x_train = x_train / 255.0
 x_test = x_test / 255.0
+
+
 
 y_train = tf.keras.utils.to_categorical(y_train)
 y_test = tf.keras.utils.to_categorical(y_test)
@@ -72,7 +75,7 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
 
-his = model.fit(x_train, y_train, epochs=2, batch_size=10)
+his = model.fit(x_train, y_train, epochs=100, batch_size=100)
 
 test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
 print(test_acc)
