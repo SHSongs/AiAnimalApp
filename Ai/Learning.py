@@ -12,29 +12,43 @@ y_test = []
 foldernames = os.listdir('../catdog/training_set/training_set')
 
 for k, folder in enumerate(foldernames):
-    for file in os.listdir('../catdog/training_set/training_set' + '/' + folder):
+    len = 0
+    for c, file in enumerate(os.listdir('../catdog/training_set/training_set' + '/' + folder)):
+        if c > 100:
+            len = c
+            break
         img = cv2.imread('../catdog/training_set/training_set' + '/' + folder + '/' + file)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = cv2.resize(gray, (224, 224))
+        img = img.reshape(224, 224, 1)
         x_train.append(img)
-    y_train += [k] * len(os.listdir('../catdog/training_set/training_set' + '/' + folder))
+    y_train += [k] * len
 
 foldernames = os.listdir('../catdog/test_set/test_set')
 
 for k, folder in enumerate(foldernames):
-    for file in os.listdir('../catdog/test_set/test_set' + '/' + folder):
+    len = 0
+    for c, file in enumerate(os.listdir('../catdog/test_set/test_set' + '/' + folder)):
+        if c > 50:
+            len = c
+            break
         img = cv2.imread('../catdog/test_set/test_set' + '/' + folder + '/' + file)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = cv2.resize(gray, (224, 224))
+        img = img.reshape(224, 224, 1)
         x_test.append(img)
-    y_test += [k] * len(os.listdir('../catdog/test_set/test_set' + '/' + folder))
-
-
-x_train = x_train[0:10]
-y_train = y_train[0:10]
+    y_test += [k] * len
 
 x_train = np.array(x_train)
 y_train = np.array(y_train)
 x_test = np.array(x_test)
 y_test = np.array(y_test)
 
-print(x_train.shape)
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+
+y_train = tf.keras.utils.to_categorical(y_train)
+y_test = tf.keras.utils.to_categorical(y_test)
 
 model = tf.keras.Sequential([
     tf.keras.layers.Convolution2D(filters=64, kernel_size=(3, 3),
@@ -58,25 +72,14 @@ model = tf.keras.Sequential([
 
 model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
 
-x_train = 1 - x_train / 255.0
-x_test = 1 - x_test / 255.0
+his = model.fit(x_train, y_train, epochs=2, batch_size=10)
 
-y_train = tf.keras.utils.to_categorical(y_train)
-y_test = tf.keras.utils.to_categorical(y_test)
-
-x_train = x_train.reshape((-1,224,224,1))
-x_test = x_test.reshape((-1,224,224,1))
-
-
-his = model.fit(x_train, y_train, epochs=1, batch_size=10, validation_split=0.2)
-
-
-
-print(his.history['acc'])
+test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
+print(test_acc)
 
 model.save('./model/cat_dog_cnn')
 
 converter = tf.lite.TFLiteConverter.from_saved_model('./model/cat_dog_cnn')
 
 tflite_model = converter.convert()
-open("./liteModel/cat_dog_cnn.tflite","wb").write(tflite_model)
+open("./liteModel/cat_dog_cnn.tflite", "wb").write(tflite_model)
