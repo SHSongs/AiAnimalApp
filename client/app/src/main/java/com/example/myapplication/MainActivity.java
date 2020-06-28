@@ -110,7 +110,7 @@ public class MainActivity extends Activity{
         InputStream istr;
         Bitmap bitmap = null;
         try {
-            istr = assetManager.open("fox.jpg");
+            istr = assetManager.open("cat.1021.jpg");
             bitmap = BitmapFactory.decodeStream(istr);
             bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
         } catch (IOException e) {
@@ -118,7 +118,7 @@ public class MainActivity extends Activity{
         }
 
         try {
-            tfliteModel = FileUtiil.loadMappedFile(this, "cat_dog_cnn.tflite");
+            tfliteModel = FileUtiil.loadMappedFile(this, "cat_dog_cnn_color.tflite");
             tflite = new Interpreter(tfliteModel, tfliteOptions);
 
             // Loads labels out from the label file.
@@ -175,24 +175,6 @@ public class MainActivity extends Activity{
         return imageProcessor.process(inputImageBuffer);
     }
 
-    /** Writes Image data into a {@code ByteBuffer}. */
-    private void convertBitmapToByteBuffer(Bitmap bitmap) {
-        if (imgData == null) {
-            return;
-        }
-        imgData.rewind();
-        bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-        // Convert the image to floating point.
-        int pixel = 0;
-        for (int i = 0; i < DIM_IMG_SIZE_X; ++i) {
-            for (int j = 0; j < DIM_IMG_SIZE_Y; ++j) {
-                final int val = intValues[pixel++];
-                imgData.putFloat((((val >> 16) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
-                imgData.putFloat((((val >> 8) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
-                imgData.putFloat((((val) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
-            }
-        }
-    }
 
     protected TensorOperator getPreprocessNormalizeOp() {
         return new NormalizeOp(IMAGE_MEAN, IMAGE_STD);
