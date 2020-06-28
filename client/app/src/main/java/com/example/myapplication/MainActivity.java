@@ -110,13 +110,13 @@ public class MainActivity extends Activity{
         InputStream istr;
         Bitmap bitmap = null;
         try {
-            istr = assetManager.open("cat.1569.jpg");
+            istr = assetManager.open("dog.125.jpg");
             bitmap = BitmapFactory.decodeStream(istr);
             bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        float[] out = null;
+        int[] out = null;
         try {
             tfliteModel = FileUtiil.loadMappedFile(this, "t_cat_dog.tflite");
             tflite = new Interpreter(tfliteModel, tfliteOptions);
@@ -150,7 +150,7 @@ public class MainActivity extends Activity{
 
             tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
 
-            out = outputProbabilityBuffer.getFloatArray();
+            out = outputProbabilityBuffer.getIntArray();
 
 
         } catch (IOException e) {
