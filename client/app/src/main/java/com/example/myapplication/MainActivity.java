@@ -141,7 +141,7 @@ public class MainActivity extends Activity{
             outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
 
             // Creates the post processor for the output probability.
-            probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
+            // probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
 
 
             inputImageBuffer = loadImage(bitmap,1);

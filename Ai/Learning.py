@@ -18,7 +18,7 @@ for k, folder in enumerate(foldernames):
             len = c
             break
         img = cv2.imread('../catdog/training_set/training_set' + '/' + folder + '/' + file)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
         img = cv2.resize(img, (224, 224))
         img = img.reshape(224, 224, 3)
 
@@ -34,7 +34,7 @@ for k, folder in enumerate(foldernames):
             len = c
             break
         img = cv2.imread('../catdog/test_set/test_set' + '/' + folder + '/' + file)
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
         img = cv2.resize(img, (224, 224))
         img = img.reshape(224, 224, 3)
         x_test.append(img)
@@ -75,17 +75,17 @@ model = tf.keras.Sequential([
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(2, activation='softmax')
 ])
-
-model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
-
-his = model.fit(x_train, y_train, epochs=2, batch_size=100)
-
-test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
-print(test_acc)
-
-model.save('./model/cat_dog_cnn')
-
-converter = tf.lite.TFLiteConverter.from_saved_model('./model/cat_dog_cnn')
-
-tflite_model = converter.convert()
-open("./liteModel/cat_dog_cnn.tflite", "wb").write(tflite_model)
+print(model.summary())
+# model.compile(optimizer=tf.keras.optimizers.Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
+#
+# his = model.fit(x_train, y_train, epochs=2, batch_size=100)
+#
+# test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
+# print(test_acc)
+#
+# model.save('./model/cat_dog_cnn')
+#
+# converter = tf.lite.TFLiteConverter.from_saved_model('./model/cat_dog_cnn')
+#
+# tflite_model = converter.convert()
+# open("./liteModel/cat_dog_cnn.tflite", "wb").write(tflite_model)
