@@ -140,8 +140,10 @@ public class MainActivity extends Activity{
             // Creates the output tensor and its processor.
             outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
 
+
             // Creates the post processor for the output probability.
-            // probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
+            // fixme 넣을까 말까?
+            probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
 
 
             inputImageBuffer = loadImage(bitmap,1);
@@ -150,9 +152,7 @@ public class MainActivity extends Activity{
 
             out = outputProbabilityBuffer.getFloatArray();
 
-//          labeledProbability =
-//                    new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
-//                            .getMapWithFloatValue();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
