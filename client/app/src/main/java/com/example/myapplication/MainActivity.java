@@ -110,15 +110,15 @@ public class MainActivity extends Activity{
         InputStream istr;
         Bitmap bitmap = null;
         try {
-            istr = assetManager.open("cat.1021.jpg");
+            istr = assetManager.open("cat.1569.jpg");
             bitmap = BitmapFactory.decodeStream(istr);
             bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        float[] out = null;
         try {
-            tfliteModel = FileUtiil.loadMappedFile(this, "cat_dog_cnn_color.tflite");
+            tfliteModel = FileUtiil.loadMappedFile(this, "t_cat_dog.tflite");
             tflite = new Interpreter(tfliteModel, tfliteOptions);
 
             // Loads labels out from the label file.
@@ -148,10 +148,11 @@ public class MainActivity extends Activity{
 
             tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
 
+            out = outputProbabilityBuffer.getFloatArray();
 
-          labeledProbability =
-                    new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
-                            .getMapWithFloatValue();
+//          labeledProbability =
+//                    new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
+//                            .getMapWithFloatValue();
         } catch (IOException e) {
             e.printStackTrace();
         }
