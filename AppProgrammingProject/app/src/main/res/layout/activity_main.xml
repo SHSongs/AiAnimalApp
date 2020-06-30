@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="#119982"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/face1"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/button2"
+            android:layout_gravity="center_horizontal"
+            android:text="얼굴 상 알아보기"
+            android:textColor="#119982"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="#F9F8F8">
+
+        <LinearLayout
+            android:background="@drawable/button2"
+            android:layout_width="373dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="무엇을 할까요?"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#119982"></TextView>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+
+                <RadioButton
+                    android:textSize="18dp"
+                    android:id="@+id/face"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="얼굴 상 알아보기"
+                    ></RadioButton>
+
+                <RadioButton
+                    android:textSize="18dp"
+                    android:id="@+id/sTest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="심리테스트"
+                    ></RadioButton>
+
+                <RadioButton
+                    android:textSize="18dp"
+                    android:id="@+id/chu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="나에게 꼭 맞는 추천"></RadioButton>
+
+
+
+
+                <RadioButton
+                    android:textSize="18dp"
+                    android:id="@+id/resultCompare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="친구와 결과 비교하기"></RadioButton>
+
+
+
+            </RadioGroup>
+
+            <Button
+                android:background="@drawable/button"
+                android:id="@+id/choose"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:text="골랐어요"></Button>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

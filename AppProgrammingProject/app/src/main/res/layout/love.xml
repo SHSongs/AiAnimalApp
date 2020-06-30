@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="무엇을 알고 싶나요?"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:textColor="#119982"
+        android:layout_gravity="center"></TextView>
+
+
+
+    <Button
+        android:id="@+id/one"
+        android:background="@drawable/button2"
+        android:text="1. 나의 연애 스타일"
+        android:textColor="#119982"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="5dp"
+        android:layout_height="0dp"></Button>
+
+    <!-- https://witapp.co/story/14706213 2번 !-->
+
+    <Button
+        android:id="@+id/two"
+        android:background="@drawable/button2"
+        android:text="2. 내 연애방식의 장점과 단점"
+        android:textColor="#119982"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="5dp"
+        android:layout_height="0dp"></Button>
+
+    <!-- https://m.blog.naver.com/PostView.nhn?blogId=mewing81&logNo=221429142388&proxyReferer=https:%2F%2Fwww.google.com%2F 4번!-->
+
+    <Button
+        android:id="@+id/three"
+        android:background="@drawable/button2"
+        android:text="3. 원하는 결혼 스타일"
+        android:textColor="#119982"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="5dp"
+        android:layout_height="0dp"></Button>
+
+    <!-- http://m.blog.daum.net/lcwh1269/5576069 !-->
+
+    <Button
+        android:id="@+id/four"
+        android:background="@drawable/button2"
+        android:text="4.바람기 테스트"
+        android:textColor="#119982"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="5dp"
+        android:layout_height="0dp"></Button>
+
+    <!--http://www.getggul.com/section/newsview.php?idxno=10272-->
+
+
+</LinearLayout>
