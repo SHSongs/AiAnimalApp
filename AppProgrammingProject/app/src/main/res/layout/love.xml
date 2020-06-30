@@ -62,7 +62,7 @@
     <Button
         android:id="@+id/four"
         android:background="@drawable/button2"
-        android:text="4.바람기 테스트"
+        android:text="4. 바람기 테스트"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"

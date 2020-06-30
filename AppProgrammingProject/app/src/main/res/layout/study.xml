@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/one"
         android:background="@drawable/button2"
-        android:text="1.공부습관"
+        android:text="1. 공부습관"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -62,7 +62,7 @@
     <Button
         android:id="@+id/four"
         android:background="@drawable/button2"
-        android:text="4.공부유형"
+        android:text="4. 공부유형"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"

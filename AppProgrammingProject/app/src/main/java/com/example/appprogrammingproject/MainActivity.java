@@ -1,5 +1,6 @@
 package com.example.appprogrammingproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         sTest=findViewById(R.id.sTest);
         chu=findViewById(R.id.chu);
         resultCompare=findViewById(R.id.resultCompare);
+
 
         choose.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/one"
         android:background="@drawable/button2"
-        android:text="1. 나의 인간관계                         "
+        android:text="1. 나의 인간관계"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 성격에 따른 인간관계 팁         "
+        android:text="2. 성격에 따른 인간관계 팁"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 내 주변의 인간관계 ( 주관식 )   "
+        android:text="3. 내 주변의 인간관계 ( 주관식 )"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
