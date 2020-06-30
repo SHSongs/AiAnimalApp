@@ -1,18 +1,18 @@
 package com.example.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
+import android.provider.MediaStore;
 import android.view.TextureView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
-import org.tensorflow.lite.support.common.FileUtil;
 import org.tensorflow.lite.support.common.TensorOperator;
 import org.tensorflow.lite.support.common.TensorProcessor;
 import org.tensorflow.lite.support.common.ops.NormalizeOp;
@@ -21,25 +21,25 @@ import org.tensorflow.lite.support.image.TensorImage;
 import org.tensorflow.lite.support.image.ops.ResizeOp;
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp;
 import org.tensorflow.lite.support.image.ops.Rot90Op;
-import org.tensorflow.lite.support.label.TensorLabel;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 
 import com.example.myapplication.Utils.FileUtiil;
 
 
 public class MainActivity extends Activity{
 
+
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    ImageView imageView;
+    TextView textView;
+
+    Bitmap imageBitmap;
     /**
      * Float model does not need dequantization in the post-processing. Setting mean and std as 0.0f
      * and 1.0f, repectively, to bypass the normalization.
@@ -105,24 +105,16 @@ public class MainActivity extends Activity{
 
         AssetManager assetManager = getApplicationContext().getAssets();
 
+        textView = findViewById(R.id.textView);
+        imageView = findViewById(R.id.imageView);
+
+        dispatchTakePictureIntent();
 
 
-        InputStream istr;
-        Bitmap bitmap = null;
-        try {
-            istr = assetManager.open("dog.125.jpg");
-            bitmap = BitmapFactory.decodeStream(istr);
-            bitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         int[] out = null;
         try {
             tfliteModel = FileUtiil.loadMappedFile(this, "t_cat_dog.tflite");
             tflite = new Interpreter(tfliteModel, tfliteOptions);
-
-            // Loads labels out from the label file.
-            labels = FileUtil.loadLabels(this, getLabelPath());
 
             int imageTensorIndex = 0;
 
@@ -146,16 +138,25 @@ public class MainActivity extends Activity{
             probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build();
 
 
-            inputImageBuffer = loadImage(bitmap,1);
+            inputImageBuffer = loadImage(imageBitmap,1);
 
             tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
 
             out = outputProbabilityBuffer.getIntArray();
 
+            /*set text view*/
+            if (out[0] == 0) {
+                textView.setText("고양이");
+            } else if (out[0] == 1) {
+                textView.setText("강아지");
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
 
     }
 
@@ -184,8 +185,24 @@ public class MainActivity extends Activity{
         return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
     }
 
-    protected String getLabelPath() {
-        return "labels.txt";
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageView.setImageBitmap(imageBitmap);
+            this.imageBitmap = imageBitmap;
+        }
+    }
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
 }
