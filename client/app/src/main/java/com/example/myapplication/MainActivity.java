@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.MediaStore;
@@ -25,6 +26,7 @@ import org.tensorflow.lite.support.image.ops.Rot90Op;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.util.List;
@@ -96,8 +98,9 @@ public class MainActivity extends Activity{
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(imageBitmap);
+
             this.imageBitmap = imageBitmap;
+            imageView.setImageBitmap(imageBitmap);
 
             predict();
 
@@ -106,8 +109,14 @@ public class MainActivity extends Activity{
 
     private void predict(){
 
+        AssetManager assetManager = getApplicationContext().getAssets();
+
+        InputStream istr;
         try {
             tfliteModel = FileUtiil.loadMappedFile(this, "t_cat_dog.tflite");
+            //istr = assetManager.open("dog.4.jpg");
+            //imageBitmap = BitmapFactory.decodeStream(istr);
+            imageBitmap = Bitmap.createScaledBitmap(imageBitmap, 224, 224, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -126,7 +135,7 @@ public class MainActivity extends Activity{
 
 
 
-        int[] out = null;
+        float[] out = null;
 
         // Creates the input tensor.
         inputImageBuffer = new TensorImage(imageDataType);
@@ -144,10 +153,10 @@ public class MainActivity extends Activity{
 
         tflite.run(inputImageBuffer.getBuffer(), outputProbabilityBuffer.getBuffer().rewind());
 
-        out = outputProbabilityBuffer.getIntArray();
+        out = outputProbabilityBuffer.getFloatArray();
 
         /*set text view*/
-        if (out[0] == 0) {
+        if (out[0] < 0.5f) {
             textView.setText("고양이");
         } else {
             textView.setText("강아지");
