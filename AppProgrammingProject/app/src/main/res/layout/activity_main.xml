@@ -97,6 +97,14 @@
 
                 <RadioButton
                     android:textSize="18dp"
+                    android:id="@+id/place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="자신이 있는 장소와 닮은 곳 찾기"></RadioButton>
+
+                <RadioButton
+                    android:textSize="18dp"
                     android:id="@+id/sTest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

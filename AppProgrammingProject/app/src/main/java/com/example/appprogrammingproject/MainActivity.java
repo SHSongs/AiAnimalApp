@@ -14,7 +14,7 @@ import android.widget.RadioButton;
 public class MainActivity extends AppCompatActivity {
 
     Button btn, choose;
-    RadioButton sTest, chu, resultCompare, face;
+    RadioButton sTest, chu, resultCompare, face, place;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         chu = findViewById(R.id.chu);
         resultCompare = findViewById(R.id.resultCompare);
 
+        place = findViewById(R.id.place);
 
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
                     //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
                 } else if (resultCompare.isChecked()) {  //친구와 결과 비교
                     //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
+                }
+                else if (place.isChecked()){
+                    Intent st = new Intent(getApplicationContext(), Place.class);
+                    startActivity(st);
                 }
 
             }
