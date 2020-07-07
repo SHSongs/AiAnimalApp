@@ -122,7 +122,7 @@ public class Stress extends Activity {
 
                             result.setNegativeButton("계속 하기", null);
 
-                        }else if (i == 4) {
+                        } else if (i == 4) {
 
                             result.setTitle("사자를 선택한 당신!");
                             result.setMessage("자존심이 무척 강하시군요. 다른 사람이 자신을 무시하는 태도를 보이면 화가 나고, 다른 사람과 비교 당하면 쉽게 상처받기도 합니다. " +
@@ -159,7 +159,7 @@ public class Stress extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime + ")");
+                        one.setText("1. 스트레스 원인\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -177,23 +177,24 @@ public class Stress extends Activity {
             @Override
             public void onClick(View view) {
 
-                final String[] item = new String[]{"정사각형", "직사각형", "삼각형", "동그라미", "구불구불한 선"};
+                final String[] item = new String[]{"길을 잃은 노인", "우는 아이", "물건을 떨어트린 간호사", "동그라미", "넘어지려는 사람"};
 
                 final AlertDialog.Builder result = new AlertDialog.Builder(Stress.this);
 
                 final AlertDialog.Builder a = new AlertDialog.Builder(Stress.this);
 
-                a.setTitle("마음에 드는 도형을 선택해주세요").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
+                a.setTitle("누구를 먼저 도우시겠어요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
 
                         if (i == 0) {
 
-                            result.setTitle("정사각형");
-                            result.setMessage("안정적인 환경과 분명한 방향이 제시되었을 때 편안함을 느끼는 사람입니다. 보수적인 성향이 있으며 딱 맞아떨어지고 정돈된 것을 좋아합니다. " +
-                                    "아무리 반복적이고 성가신 일이더라도 일이 끝날 때까지 완벽히 해내는 완벽주의자입니다. " +
-                                    "그래서 공부나 운동을 할 때도 정확한 계획이 세워져 있어야 안심이 되고 목표를 향해 달려갈 수 있습니다.");
+                            result.setTitle("길을 잃은 노인을 선택하셨네요!");
+                            result.setMessage("당신은 전통적인 매너를 지킵니다. 무슨 일이 일어나더라도 항상" +
+                                    "합리성을 가지고 결정을 내리는군요. 늘 결과까지 염두에 두고 생각하는 당신!" +
+                                    "당신은 다른사람들이 발견하지 못한 흔하지 않은 분야를 탐구하고 좋아하지 않나요?" +
+                                    "그런 모습에 많은 사람들이 존경하고 있네요.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -210,9 +211,11 @@ public class Stress extends Activity {
                         } else if (i == 1) {
 
 
-                            result.setTitle("직사각형");
-                            result.setMessage("정사각형을 좋아하는 사람과 비슷하게 규칙적인 것과 정돈된 것을 좋아합니다. 하지만 일을 할 때 수차례 회의를 거치는 등 " +
-                                    "정해진 룰을 벗어나지 않으려고 하는 면이 있습니다. 또한 매우 세심하고 계획적인 사람이라고 할 수 있습니다.");
+                            result.setTitle("우는 아이를 선택하셨네요!");
+                            result.setMessage("당신은 대단한 공감능력과 민감한 마음을 가지고있어 종종 상처를 입는군요. 당신은 대개 사람들을 " +
+                                    "매우 쉽게 신뢰해서 배반을 당하면 충격을 많이 받는 타입입니다. 확실히 당신의 친구들은 당신에게 \"" +
+                                    "어디 가서 당하지 말아라\"라고 말한 적이 있겠군요. 사실 친구들이 그러는건 다 걱정 때문인거\n" +
+                                    " 아시죠? 당신을 사랑스럽게 생각한답니다.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -228,9 +231,10 @@ public class Stress extends Activity {
 
                         } else if (i == 2) {
 
-                            result.setTitle("삼각형");
-                            result.setMessage("목표지향적인 사람입니다. 운동이나 학업을 하기 전 계획하여 실행합니다. 성취감에 다시 동기부여를 받는 사람이죠. " +
-                                    "크고 장기적인 목표에 초점을 맞추는 편입니다. 그래서 때로는 작은 디테일을 놓치는 경우가 있습니다.");
+                            result.setTitle("물건을 떨어트린 간호사를 선택했네요!");
+                            result.setMessage("당신은 정말 낙천적인 사람이군요! 당신은 다른 사람들이 눈치채지 못하는 아름다움까지" +
+                                    "느낄 수 있는 사람입니다. 문제가 있을 때마다 공평한 판단을 내리고 싶어하고요. 삶이 때때로" +
+                                    "어려워 질지라도, 당신은 낙관적인 성격을 유지합니다. 그래서 모든 사람들이 당신과 어울리고 싶어 하는군요!");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -246,10 +250,10 @@ public class Stress extends Activity {
 
                         } else if (i == 3) {
 
-                            result.setTitle("동그라미");
-                            result.setMessage("사교적이고 의사소통이 원활하며 사글사글한 성격입니다. 이런 사람의 장점은 바로 유통성이 있다는 것이죠. " +
-                                    "계획했던 일이 있어도 상황에 따라 조금씩 방향을 수정해 나갑니다. " +
-                                    "또한 의사소통을 좋아하기 때문에 계획을 세울 때 주의 사람들의 의견을 많이 듣고 참고하는 경향이 있습니다.");
+                            result.setTitle("넘어지려는 사람을 선택했네요!");
+                            result.setMessage("당신없이 즐겁고 재미있는 모임을 가질 순 없을거예요. 다른 사람들은 당신을 " +
+                                    "리더로 생각해요. 당신은 본인도 모르게 주변을 끌어당기고 설득하는 법을 알고 있습니다!" +
+                                    "목표를 한번 설정하면 멈출 줄 모르는군요! 그런 모습에 많은 사람들이 당신을 따르려고 하네요.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -263,23 +267,6 @@ public class Stress extends Activity {
 
                             result.setNegativeButton("계속 하기", null);
 
-                        } else if (i == 4) {
-                            result.setTitle("구불구불한 선");
-                            result.setMessage("예측할 수 없으며 창의적인 사람입니다. 새로운 일을 할 때 가장 기분이 좋아지며 반복적인 것을 싫어합니다. 어떤 일이 주어지면 가장 " +
-                                    "새롭고 창의적인 아이디어를 떠올립니다. 그래서 계획을 세우고 어떤 일을 하기 보다는 즉흥적인 면이 있습니다. " +
-                                    "때로는 이러한 계획성이 좋은 결과를 내기도 하지만, 때로는 목표에 도달하지 못할 때가 있어 조심해야 할 필요도 있습니다.");
-
-
-                            result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    final Intent main = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(main);
-                                    finish();
-                                }
-                            });
-
-                            result.setNegativeButton("계속 하기", null);
                         }
                     }
 
@@ -299,7 +286,7 @@ public class Stress extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime + ")");
+                        one.setText("2. 남들에게 보이는 나\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -317,21 +304,23 @@ public class Stress extends Activity {
             @Override
             public void onClick(View view) {
 
-                final String[] item = new String[]{"동상을 마주본다", "동상에 몸을 기댄다", "동상은 필요없고 나만의 포즈를 취한다", "어깨동무를 한다"};
+                final String[] item = new String[]{"정면으로", "엎드려서", "왼쪽으로", "오른쪽으로"};
 
                 final AlertDialog.Builder result = new AlertDialog.Builder(Stress.this);
 
                 final AlertDialog.Builder a = new AlertDialog.Builder(Stress.this);
 
-                a.setTitle("당신은 멋진 동상을 발견했습니다! 어떤 자세로 사진을 찍을 건가요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
+                a.setTitle("당신은 잠들 때 어떤 모습인가요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
 
                         if (i == 0) {
 
-                            result.setTitle("다정하게 동상을 마주보고 포즈를 취한다");
-                            result.setMessage("공부에 대한 욕심, 성공에 대한 욕심이 많은 사람입니다. 누군가에게 지기 싫어서 누구보다 열심히 하는 학자 스타일입니다.");
+                            result.setTitle("정면으로");
+                            result.setMessage("당신은 사고방식이 독특한 개성있는 매력의 소유자입니다. 소신과 주관이 뚜렷하며 " +
+                                    "자신만의 사고방식으로 놀라운 발상을 하네요. 감정적인 면에서 단순하고 천진난만하며 증오나" +
+                                    "배신감을 갖게 되어도 금세 잊고 떨쳐내고 있네요.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -348,8 +337,9 @@ public class Stress extends Activity {
                         } else if (i == 1) {
 
 
-                            result.setTitle("동상에 기대는 편안한 포즈를 취한다");
-                            result.setMessage("공부에 별로 관심이 없군요! 산만하다는 소리를 많이 듣지만 좋아하는 분야가 생기면 열심히 파는 자유로운 스타일입니다.");
+                            result.setTitle("엎드려서");
+                            result.setMessage("당신은 사람들 시선에 신경쓰는 편이며 사람을 잃는 것에 대한 두려움이 있어" +
+                                    "싸움이 생겨도 항상 중립의 입장을 유지합니다. 겉으로는 쿨해보이고 도도하지만 사실 속으로는 여린사람!");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -365,8 +355,10 @@ public class Stress extends Activity {
 
                         } else if (i == 2) {
 
-                            result.setTitle("동상을 무시하고 자신만의 포즈를 취한다");
-                            result.setMessage("공부보다는 예체능에 재능이 더 많군요! 어디로 튈지 모르는 성격으로, 공부에 전념해서 스트레스를 받는 것보단 예체능에 도전해보세요!");
+                            result.setTitle("왼쪽으로");
+                            result.setMessage("당신은 매우 상냥하고 주변 사람들에게 잘 베푸는 친절한 사람입니다." +
+                                    "차분한 성격으로 어떤 일이 닥쳐도 차분하게 대처합니다. 마음이 여려서 쉽게 감동받고 " +
+                                    "눈물도 많은 편이며 주변 사람들은 당신에게 포근함을 느껴 당신을 의지하고 따릅니다.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -382,8 +374,9 @@ public class Stress extends Activity {
 
                         } else if (i == 3) {
 
-                            result.setTitle("어깨동무를 하고 사진을 찍는다");
-                            result.setMessage("공부를 계속해서 하는 스타일은 아니지만, 꽤 만족하는 성적이 나오는 것 같네요. 공부에 대한 거부감이 없어 학습위주로 공부해 보세요!");
+                            result.setTitle("오른쪽으로");
+                            result.setMessage("참을성이 많은 당신은 안 좋은 일이 생겨도 마음에 담아 두고 인내하는 편입니다." +
+                                    "감수성이 풍부하고 사려깊은 당신은 친구들의 이야기도 자기일처럼 공감하며 들어줍니다.");
 
 
                             result.setPositiveButton("홈으로 돌아가기", new DialogInterface.OnClickListener() {
@@ -416,7 +409,7 @@ public class Stress extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime + ")");
+                        one.setText("3. 나의 성격\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }

@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 현재 내 상태 1"
+        android:text="2. 남들에게 보이는 나 "
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -43,12 +43,12 @@
         android:layout_margin="5dp"
         android:layout_height="0dp"></Button>
 
-    <!-- https://post.naver.com/viewer/postView.nhn?volumeNo=16261264&memberNo=9270899 !-->
+    <!-- https://1boon.kakao.com/vonvon/personalitytest80 !-->
 
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 현재 내 상태 2"
+        android:text="3. 나의 성격"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -57,7 +57,7 @@
         android:layout_margin="5dp"
         android:layout_height="0dp"></Button>
 
-    <!--https://witapp.co/story/14706213!-->
+    <!-- https://witapp.co/story/14706213 !-->
 
 
 

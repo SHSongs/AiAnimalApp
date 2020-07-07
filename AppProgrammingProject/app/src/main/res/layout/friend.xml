@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 성격에 따른 인간관계 팁"
+        android:text="2. 내가 속해있는 대인관계 유형"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -43,25 +43,13 @@
         android:layout_margin="5dp"
         android:layout_height="0dp"></Button>
 
-    <!-- https://hs.e-school.or.kr/webzine/vol15/sub05.jsp !-->
+    <!-- https://kr.vonvon.me/quiz/3684#question !-->
+
 
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 내 주변의 인간관계 ( 주관식 )"
-        android:textColor="#119982"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_margin="5dp"
-        android:layout_height="0dp"></Button>
-
-    <!-- https://callcenter.tistory.com/586 !-->
-    <Button
-        android:id="@+id/four"
-        android:background="@drawable/button2"
-        android:text="4.내가 인간관계를 만들어가는 방법"
+        android:text="3.내가 인간관계를 만들어가는 방법"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
