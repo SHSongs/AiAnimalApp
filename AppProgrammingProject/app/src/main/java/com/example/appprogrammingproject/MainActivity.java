@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent st = new Intent(getApplicationContext(), Stest.class);
                     startActivity(st);
                 } else if (face.isChecked()) {  //얼굴 상 알아보기 클릭
+                    Intent st = new Intent(getApplicationContext(), Face.class);
+                    startActivity(st);
 
                 } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
                     //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
