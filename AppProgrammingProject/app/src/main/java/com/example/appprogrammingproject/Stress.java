@@ -286,7 +286,7 @@ public class Stress extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("2. 남들에게 보이는 나\n(테스트한 날짜 : " + getTime + ")");
+                        two.setText("2. 남들에게 보이는 나\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -409,7 +409,7 @@ public class Stress extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("3. 나의 성격\n(테스트한 날짜 : " + getTime + ")");
+                        three.setText("3. 나의 성격\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }

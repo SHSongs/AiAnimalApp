@@ -233,7 +233,7 @@ public class Friend extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("2. 내가 속해있는 대인관계 유형\n(테스트한 날짜 : " + getTime + ")");
+                        two.setText("2. 내가 속해있는 대인관계 유형\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -357,7 +357,7 @@ public class Friend extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("3. 내가 인간관계를 만들어가는 방법\n(테스트한 날짜 : " + getTime + ")");
+                        three.setText("3. 내가 인간관계를 만들어가는 방법\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }

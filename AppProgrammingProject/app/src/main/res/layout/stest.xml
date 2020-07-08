@@ -19,17 +19,19 @@
 
 
 
+
     <Button
         android:id="@+id/study"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="2"
         android:background="@drawable/button"
         android:text="공부"
         android:textColor="#FFFF"
-        android:textStyle="bold"
         android:textSize="22dp"
-        android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_margin="5dp"
-        android:layout_height="0dp"></Button>
+        android:textStyle="bold"></Button>
+
 
     <Button
         android:id="@+id/stress"

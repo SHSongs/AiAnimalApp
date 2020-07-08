@@ -41,7 +41,7 @@ public class Love extends Activity {
 
                 final AlertDialog.Builder a = new AlertDialog.Builder(Love.this);
 
-                a.setTitle("갑작스럽게 병원에 입원한 당신을 위해 친구들이 과일을 사 들고 병문안을 왔네요. 무슨 과일을 먼저 맛보시겠어요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
+                a.setTitle("과일을 선물받은 당신! 무슨 과일을 먼저 맛보시겠어요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -269,7 +269,7 @@ public class Love extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("2. 내 연애방식의 장점과 단점\n(테스트한 날짜 : " + getTime + ")");
+                        two.setText("2. 내 연애방식의 장점과 단점\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -402,7 +402,7 @@ public class Love extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("3. 원하는 결혼 스타일\n(테스트한 날짜 : " + getTime + ")");
+                        three.setText("3. 원하는 결혼 스타일\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -535,7 +535,7 @@ public class Love extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("4. 이상형\n(테스트한 날짜 : " + getTime + ")");
+                        four.setText("4. 이상형\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -138,7 +140,9 @@ public class Study extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime+")");
+                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime + ")");
+
+
 
 
                     }
@@ -147,8 +151,6 @@ public class Study extends Activity {
 
 
                 a.show();
-
-
 
 
             }
@@ -280,7 +282,7 @@ public class Study extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime+")");
+                        two.setText("2. 나의 계획성\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
@@ -397,7 +399,7 @@ public class Study extends Activity {
                         String getTime = simpleDate.format(date);
 
 
-                        one.setText("1. 나의 공부 태도\n(테스트한 날짜 : " + getTime+")");
+                        three.setText("3. 나의 공부 스타일\n(테스트한 날짜 : " + getTime + ")");
 
 
                     }
