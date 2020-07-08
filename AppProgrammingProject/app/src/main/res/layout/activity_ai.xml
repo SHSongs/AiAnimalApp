@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ai"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <RadioButton
+            android:textSize="18dp"
+            android:id="@+id/face"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="얼굴 상 알아보기"
+            ></RadioButton>
+
+        <RadioButton
+            android:textSize="18dp"
+            android:id="@+id/place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="너와 가장 가까운 장소"></RadioButton>
+
+
+
+    </RadioGroup>
+
+
+    <Button
+        android:background="@drawable/button"
+        android:id="@+id/choose"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:text="골랐어요"></Button>
+
+</LinearLayout>

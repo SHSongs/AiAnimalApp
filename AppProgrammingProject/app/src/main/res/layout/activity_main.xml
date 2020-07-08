@@ -27,9 +27,9 @@
 
         <LinearLayout
 
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
             <ImageView
@@ -88,12 +88,14 @@
 
                 <RadioButton
                     android:textSize="18dp"
-                    android:id="@+id/face"
+                    android:id="@+id/ai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="얼굴 상 알아보기"
+                    android:text="AI가 판단한 너"
                     ></RadioButton>
+
+
 
                 <RadioButton
                     android:textSize="18dp"

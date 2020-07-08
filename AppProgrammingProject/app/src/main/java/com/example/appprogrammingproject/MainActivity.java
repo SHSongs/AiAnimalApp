@@ -14,7 +14,7 @@ import android.widget.RadioButton;
 public class MainActivity extends AppCompatActivity {
 
     Button btn, choose;
-    RadioButton sTest, chu, resultCompare, face;
+    RadioButton sTest, chu, resultCompare, ai;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn=findViewById(R.id.btn);
-        face = findViewById(R.id.face);
+        ai = findViewById(R.id.ai);
         choose = findViewById(R.id.choose);
         sTest = findViewById(R.id.sTest);
         chu = findViewById(R.id.chu);
@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 if (sTest.isChecked()) {  //심리테스트<xml1>
                     Intent st = new Intent(getApplicationContext(), Stest.class);
                     startActivity(st);
-                } else if (face.isChecked()) {  //얼굴 상 알아보기 클릭
-                    Intent st = new Intent(getApplicationContext(), Face.class);
+                } else if (ai.isChecked()) {  //얼굴 상 알아보기 클릭
+                    Intent st = new Intent(getApplicationContext(), Ai.class);
                     startActivity(st);
 
                 } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (resultCompare.isChecked()) {  //친구와 결과 비교
                     //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
                 }
+
 
             }
         });
