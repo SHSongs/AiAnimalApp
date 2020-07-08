@@ -32,6 +32,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -170,7 +176,37 @@ public class Place extends AppCompatActivity {
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
                         .getMapWithFloatValue();
 
+
+        StringBuilder sb = new StringBuilder();
+
+        Iterator it = sortByValue(labeledProbability).iterator();
+        while(it.hasNext()) {
+
+            String temp = (String) it.next();
+
+            sb.append(temp).append(" = ").append(labeledProbability.get(temp)).append("\n");
+
+        }
+
+        textView.setText(sb.toString());
+
     }
+    public List sortByValue(final Map map) {
+        ArrayList list = new ArrayList(map.keySet());
+
+        Collections.sort(list,new Comparator() {
+            public int compare(Object o1,Object o2) {
+                Object v1 = map.get(o1);
+                Object v2 = map.get(o2);
+                return ((Comparable) v2).compareTo(v1);
+            }
+        });
+
+        // Collections.reverse(list); // 주석시 오름차순
+
+        return list;
+    }
+
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
