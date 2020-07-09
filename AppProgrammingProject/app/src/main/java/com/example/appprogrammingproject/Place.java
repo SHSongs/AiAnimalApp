@@ -2,6 +2,7 @@ package com.example.appprogrammingproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 
@@ -124,6 +125,7 @@ public class Place extends AppCompatActivity {
     }
 
 
+    @SuppressLint("DefaultLocale")
     private void predict(){
 
         AssetManager assetManager = getApplicationContext().getAssets();
@@ -179,12 +181,14 @@ public class Place extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
 
-        Iterator it = sortByValue(labeledProbability).iterator();
-        while(it.hasNext()) {
+        for (Object o : sortByValue(labeledProbability)) {
 
-            String temp = (String) it.next();
+            String temp = (String) o;
+            float persent = 0;
+            persent = labeledProbability.get(temp);
+            persent = persent * 100;
 
-            sb.append(temp).append(" = ").append(labeledProbability.get(temp)).append("\n");
+            sb.append(temp).append(" = ").append(String.format("%.3f",persent)).append("%\n");
 
         }
 
