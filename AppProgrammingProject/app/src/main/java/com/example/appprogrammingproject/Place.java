@@ -181,15 +181,18 @@ public class Place extends AppCompatActivity {
 
         StringBuilder sb = new StringBuilder();
 
+        int i = 0;
         for (Object o : sortByValue(labeledProbability)) {
-
+            if(i > 2){
+                break;
+            }
             String temp = (String) o;
             float persent = 0;
             persent = labeledProbability.get(temp);
             persent = persent * 100;
 
             sb.append(temp).append(" = ").append(String.format("%.3f",persent)).append("%\n");
-
+            i++;
         }
 
         textView.setText(sb.toString());
