@@ -7,21 +7,50 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn, choose;
+    Button btn, choose, menu;
     RadioButton sTest, chu, resultCompare, ai;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_main);
+
         Intent intent = new Intent(this, Loading.class);
         startActivity(intent);
+    }
+
+    public boolean onCreateOptionMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId())
+        {
+            case R.id.preResult1:
+                Intent pre=new Intent(this,preResult.class);
+                startActivity(pre);
+                Toast.makeText(getApplicationContext(),"이전 결과 보기",Toast.LENGTH_SHORT).show();
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
 
@@ -36,6 +65,18 @@ public class MainActivity extends AppCompatActivity {
         sTest = findViewById(R.id.sTest);
         chu = findViewById(R.id.chu);
         resultCompare = findViewById(R.id.resultCompare);
+        menu=findViewById(R.id.menu);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,menu);
+
+                MenuInflater inflater=popupMenu.getMenuInflater();
+                inflater.inflate(R.menu.menu,popupMenu.getMenu());
+                popupMenu.show();;
+            }
+        });
 
 
         choose.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }

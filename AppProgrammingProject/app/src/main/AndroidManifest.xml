@@ -16,6 +16,13 @@
         <activity android:name=".Place" />
         <activity android:name=".Face" />
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity
+            android:name=".Loading"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,6 +31,7 @@
 
 
 
+        <activity android:name=".preResult"></activity>
         <activity android:name=".Stest" />
         <activity android:name=".Friend" />
         <activity android:name=".Love" />

@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/menu"
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_gravity="right"
@@ -24,6 +25,7 @@
             android:textSize="15dp">
 
         </Button>
+
 
         <LinearLayout
 
