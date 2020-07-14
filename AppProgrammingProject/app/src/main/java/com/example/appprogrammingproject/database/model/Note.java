@@ -2,10 +2,10 @@ package com.example.appprogrammingproject.database.model;
 public class Note {
     public static final String TABLE_NAME = "notes";
 
-    public static final String COLUMN_ID = "id";            // 무엇을 알고 싶나요
+    public static final String COLUMN_ID = "id";                    // 무엇을 알고 싶나요
     public static final String COLUMN_GROUPITEM = "groupitem";      // 무엇을 테스트 해볼까요
     public static final String COLUMN_TIMESTAMP = "timestamp";
-    public static final String COLUMN_SELECTITEM = "selectitem";        // 선택한 것
+    public static final String COLUMN_SELECTITEM = "selectitem";    // 선택한 것
 
     private int id;
     private String timestamp;
@@ -49,9 +49,9 @@ public class Note {
 
 
     public Note(int id, int groupitem, int selectitem, String timestamp) {
-        this.id = id;
-        this.groupitem = groupitem;
-        this.selectitem = selectitem;
+        this.id = id; //각 분야의 심리테스트들
+        this.groupitem = groupitem; //심리 테스트 4가지 분야 순서 매겨놓음
+        this.selectitem = selectitem; //심리테스트 결과
         this.timestamp = timestamp;
     }
 

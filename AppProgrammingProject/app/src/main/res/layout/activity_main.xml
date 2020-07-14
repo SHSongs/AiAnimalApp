@@ -109,12 +109,12 @@
                     ></RadioButton>
 
                 <RadioButton
-                    android:textSize="18dp"
-                    android:id="@+id/chu"
+                    android:id="@+id/cu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="💌 나에게 꼭 맞는 추천"></RadioButton>
+                    android:text="💌 나에게 꼭 맞는 추천"
+                    android:textSize="18dp"></RadioButton>
 
 
 

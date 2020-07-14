@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -32,6 +33,7 @@ public class Stress extends Activity {
     Date dateTime = new Date(now);
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
+    final int[] select = {0};
 
 
     private DatabaseHelper db;
@@ -95,7 +97,7 @@ public class Stress extends Activity {
 
                 result.setNegativeButton("계속 하기", null);
 
-                final int[] select = {0};
+
 
                 a.setTitle("\uD83D\uDC18 어떤 동물과 여행을 함께 해야한다면, 어떤 동물과 함께 하겠습니까?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
@@ -192,11 +194,12 @@ public class Stress extends Activity {
 
                 result.setNegativeButton("계속 하기", null);
 
+
+
                 a.setTitle("\uD83D\uDC81\uD83C\uDFFC 누구를 먼저 도우시겠어요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-
+                        select[0] = i;
                         if (i == 0) {
 
                             result.setTitle("\uD83D\uDC74\uD83C\uDFFB 길을 잃은 노인을 선택하셨네요!");
@@ -247,6 +250,8 @@ public class Stress extends Activity {
 
 
 
+
+
                     }
                 });
                 a.setNegativeButton("취소", null);
@@ -279,9 +284,11 @@ public class Stress extends Activity {
 
                 result.setNegativeButton("계속 하기", null);
 
+
                 a.setTitle("\uD83D\uDECC 당신은 잠들 때 어떤 모습인가요?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
 
 
                         if (i == 0) {
@@ -324,6 +331,8 @@ public class Stress extends Activity {
 
                         result.show();
 
+
+
                     }
                 });
                 a.setNegativeButton("취소", null);
@@ -347,6 +356,7 @@ public class Stress extends Activity {
 
             switch (n.getId()) {
                 case 0:
+
                     btn = one;
                     break;
                 case 1:

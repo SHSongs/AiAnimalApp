@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,13 +23,31 @@
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/study"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아직 심리테스트 결과가 충분하지 않네요"
-                android:layout_margin="50dp"
-                android:gravity="center"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 🎒"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="50dp"></TextView>
+
+                <TextView
+                    android:id="@+id/study"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="50dp"
+                    android:gravity="center"
+                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:layout_width="400dp"
@@ -45,13 +61,31 @@
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/stress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아직 심리테스트 결과가 충분하지 않네요"
-                android:layout_margin="50dp"
-                android:gravity="center"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 🙇"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="50dp"></TextView>
+
+                <TextView
+                    android:id="@+id/stress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="50dp"
+                    android:gravity="center"
+                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+            </LinearLayout>
+
+
 
 
             <TextView
@@ -66,14 +100,28 @@
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/love"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아직 심리테스트 결과가 충분하지 않네요"
-                android:layout_margin="50dp"
-                android:gravity="center"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=" 💑"
+                    android:textSize="50dp"></TextView>
+
+                <TextView
+                    android:id="@+id/love"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="50dp"
+                    android:gravity="center"
+                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+            </LinearLayout>
             <TextView
                 android:layout_width="400dp"
                 android:layout_height="100dp"
@@ -86,18 +134,33 @@
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/friend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아직 심리테스트 결과가 충분하지 않네요"
-                android:layout_margin="50dp"
-                android:gravity="center"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 👪"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textSize="50dp"></TextView>
+
+                <TextView
+                    android:id="@+id/friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="50dp"
+                    android:gravity="center"
+                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
-    </ScrollView>
 
-</LinearLayout>
+
+</ScrollView>

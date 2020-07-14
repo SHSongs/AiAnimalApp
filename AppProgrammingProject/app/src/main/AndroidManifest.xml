@@ -29,15 +29,14 @@
             </intent-filter>
         </activity>
 
-
-
-        <activity android:name=".preResult"></activity>
         <activity android:name=".Stest" />
         <activity android:name=".Friend" />
         <activity android:name=".Love" />
         <activity android:name=".Stress" />
         <activity android:name=".Study" />
-        <activity android:name=".Recommend"></activity>
+        <activity android:name=".preResult" />
+        <activity android:name=".Recommend" />
+
     </application>
 
 </manifest>

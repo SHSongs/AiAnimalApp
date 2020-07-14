@@ -16,12 +16,52 @@ import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
+
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn, choose, menu;
-    RadioButton sTest, chu, resultCompare, ai;
+    RadioButton sTest, cu, ai;
+    ArrayList<Note> notesList = new ArrayList<>();
+    private DatabaseHelper db;
+
+
+
+    private void createNote(int id, int group, int select) {
+        // inserting note in db and getting
+        // newly inserted note id
+        long gap = db.insertNote(id, group, select);
+
+        // get the newly inserted note from db
+        Note n = db.getNote(gap);
+
+        if (n != null) {
+            // adding new note to array list at 0 position
+
+            notesList.add(0, n);
+
+            // refreshing the list
+
+        }
+    }
+
+    /**
+     * Toggling list and empty notes view
+     */
+
+    private void deleteNote(int position) {
+        // deleting the note from db
+        db.deleteNote(notesList.get(position));
+
+        // removing the note from the list
+        notesList.remove(position);
+    }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -63,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         ai = findViewById(R.id.ai);
         choose = findViewById(R.id.choose);
         sTest = findViewById(R.id.sTest);
-        chu = findViewById(R.id.chu);
+        cu = findViewById(R.id.cu);
         menu=findViewById(R.id.menu);
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,10 +130,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent ai = new Intent(getApplicationContext(), Ai.class);
                         startActivity(ai);
 
-                    } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
-                        //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
-                        Intent chu = new Intent(getApplicationContext(), Recommend.class);
-                        startActivity(chu);
+                    } else if (cu.isChecked()) { //심리테스트 결과를 통한 추천 목록
+                        Intent ch=new Intent(getApplicationContext(),Recommend.class);
+                        startActivity(ch);
                     }
             }
         });
