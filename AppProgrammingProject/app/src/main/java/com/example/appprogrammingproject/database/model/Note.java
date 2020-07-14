@@ -3,31 +3,33 @@ public class Note {
     public static final String TABLE_NAME = "notes";
 
     public static final String COLUMN_ID = "id";            // 무엇을 알고 싶나요
-    public static final String COLUMN_GROUP = "group";      // 무엇을 테스트 해볼까요
+    public static final String COLUMN_GROUPITEM = "groupitem";      // 무엇을 테스트 해볼까요
     public static final String COLUMN_TIMESTAMP = "timestamp";
-    public static final String COLUMN_SELECT = "select";        // 선택한 것
+    public static final String COLUMN_SELECTITEM = "selectitem";        // 선택한 것
 
     private int id;
     private String timestamp;
 
-    public int getSelect() {
-        return select;
+    public int getSelectitem() {
+        return selectitem;
     }
 
-    private int select = 0;
+    private int selectitem = 0;
 
-    public int getGroup() {
-        return group;
+    private int groupitem = 0;
+
+
+    public int getGroupitem() {
+        return groupitem;
     }
 
-    public void setGroup(int group) {
-        this.group = group;
+    public void setGroupitem(int groupitem) {
+        this.groupitem = groupitem;
     }
 
-    private int group = 0;
 
-    public void setSelect(int select) {
-        this.select = select;
+    public void setSelectitem(int selectitem) {
+        this.selectitem = selectitem;
     }
 
 
@@ -35,9 +37,9 @@ public class Note {
     // Create table SQL query
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + "("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COLUMN_GROUP + " INTEGER,"
-                    + COLUMN_SELECT + " INTEGER,"
+                    + COLUMN_ID + " INTEGER,"
+                    + COLUMN_GROUPITEM + " INTEGER,"
+                    + COLUMN_SELECTITEM + " INTEGER,"
                     + COLUMN_TIMESTAMP + " DATETIME DEFAULT CURRENT_TIMESTAMP"
                     + ")";
 
@@ -46,10 +48,10 @@ public class Note {
 
 
 
-    public Note(int id, int group, int select, String timestamp) {
+    public Note(int id, int groupitem, int selectitem, String timestamp) {
         this.id = id;
-        this.group = group;
-        this.select = select;
+        this.groupitem = groupitem;
+        this.selectitem = selectitem;
         this.timestamp = timestamp;
     }
 

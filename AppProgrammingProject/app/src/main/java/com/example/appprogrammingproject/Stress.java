@@ -12,21 +12,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
 
 import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
 
 public class Stress extends Activity {
 
@@ -40,8 +36,9 @@ public class Stress extends Activity {
 
     private DatabaseHelper db;
     private void createNote( int group, int select) {
-        db.insertNote(group, select);
+        db.insertNote(0, group, select);
     }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +48,7 @@ public class Stress extends Activity {
 
         db = new DatabaseHelper(this);
 
+        List<Note> n = db.getAllNotes();
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -74,6 +72,7 @@ public class Stress extends Activity {
 
 
 
+        readData();
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
         one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,29 +156,7 @@ public class Stress extends Activity {
                         createNote( 1, select[0]);
 
                         result.show();
-                        try {
-                            FileInputStream inFs = new FileInputStream(datePath + "/ OneGetTime");//결과 값 넣기
-                            byte[] txt = new byte[3000];
-                            inFs.read(txt);
-                            String str = new String(txt);
-                            inFs.close();
-                            Toast.makeText(getApplicationContext(), "테스트 시간이 기록되었습니다.", Toast.LENGTH_LONG).show();
 
-                        } catch (IOException e) {
-
-                        }
-                        try {
-                            FileOutputStream outFs = new FileOutputStream(datePath + "/ OneGetTime");//읽기
-                            outFs.write(getTime.getBytes());
-                            outFs.close();
-                            one.setText("1.스트레스 원인\n(테스트한 날짜: " + getTime + ")");
-                            one.setBackgroundColor(Color.GRAY);
-                            one.setTextColor(Color.WHITE);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
 
                     }
@@ -359,5 +336,12 @@ public class Stress extends Activity {
         });
 
 
+    }
+
+    private void readData() {
+
+        one.setText("1.스트레스 원인\n(테스트한 날짜: " + getTime + ")");
+        one.setBackgroundColor(Color.GRAY);
+        one.setTextColor(Color.WHITE);
     }
 }

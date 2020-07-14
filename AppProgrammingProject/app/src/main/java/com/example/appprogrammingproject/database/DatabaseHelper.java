@@ -43,18 +43,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insertNote( int group, int select) {
+    public long insertNote(int id, int group, int select) {
         // get writable database as we want to write data
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         // `timestamp` will be inserted automatically.
         // no need to add them
-        values.put(Note.COLUMN_GROUP, group);
-        values.put(Note.COLUMN_SELECT, select);
-
+        values.put(Note.COLUMN_GROUPITEM, group);
+        values.put(Note.COLUMN_SELECTITEM, select);
+        values.put(Note.COLUMN_ID, id);
         // insert row
-        long id = db.insert(Note.TABLE_NAME, null, values);
+         db.insert(Note.TABLE_NAME, null, values);
 
         // close db connection
         db.close();
@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Note.TABLE_NAME,
-                new String[]{Note.COLUMN_ID, Note.COLUMN_GROUP, Note.COLUMN_SELECT, Note.COLUMN_TIMESTAMP},
+                new String[]{Note.COLUMN_ID, Note.COLUMN_GROUPITEM, Note.COLUMN_SELECTITEM, Note.COLUMN_TIMESTAMP},
                 Note.COLUMN_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -78,8 +78,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // prepare note object
         Note note = new Note(
                 cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)),
-                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_GROUP)),
-                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_SELECT)),
+                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_GROUPITEM)),
+                cursor.getInt(cursor.getColumnIndex(Note.COLUMN_SELECTITEM)),
                 cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
 
         // close the db connection
@@ -103,8 +103,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 Note note = new Note();
                 note.setId(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
-                note.setGroup(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_GROUP)));
-                note.setSelect(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_SELECT)));
+                note.setGroupitem(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_GROUPITEM)));
+                note.setSelectitem(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_SELECTITEM)));
                 note.setTimestamp(cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
 
                 notes.add(note);
