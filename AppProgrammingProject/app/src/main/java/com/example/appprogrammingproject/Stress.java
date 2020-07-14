@@ -1,6 +1,7 @@
 package com.example.appprogrammingproject;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -25,6 +26,8 @@ import java.util.Date;
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
 
+import com.example.appprogrammingproject.database.DatabaseHelper;
+
 public class Stress extends Activity {
 
     Button one, two, three, four;
@@ -34,10 +37,19 @@ public class Stress extends Activity {
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
 
+
+    private DatabaseHelper db;
+    private void createNote( int group, int select) {
+        db.insertNote(group, select);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stress);
+
+
+        db = new DatabaseHelper(this);
 
 
         one = findViewById(R.id.one);
@@ -58,7 +70,6 @@ public class Stress extends Activity {
 
         requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
-
 
 
 
@@ -86,12 +97,12 @@ public class Stress extends Activity {
 
                 result.setNegativeButton("계속 하기", null);
 
+                final int[] select = {0};
 
                 a.setTitle("\uD83D\uDC18 어떤 동물과 여행을 함께 해야한다면, 어떤 동물과 함께 하겠습니까?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-
+                        select[0] = i;
                         if (i == 0) {
 
                             result.setTitle("\uD83D\uDC35 원숭이를 선택한 당신!");
@@ -140,13 +151,12 @@ public class Stress extends Activity {
                 });
 
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        createNote( 1, select[0]);
 
                         result.show();
-
-
-
                         try {
                             FileInputStream inFs = new FileInputStream(datePath + "/ OneGetTime");//결과 값 넣기
                             byte[] txt = new byte[3000];
@@ -158,7 +168,6 @@ public class Stress extends Activity {
                         } catch (IOException e) {
 
                         }
-
                         try {
                             FileOutputStream outFs = new FileOutputStream(datePath + "/ OneGetTime");//읽기
                             outFs.write(getTime.getBytes());
@@ -166,7 +175,6 @@ public class Stress extends Activity {
                             one.setText("1.스트레스 원인\n(테스트한 날짜: " + getTime + ")");
                             one.setBackgroundColor(Color.GRAY);
                             one.setTextColor(Color.WHITE);
-
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
