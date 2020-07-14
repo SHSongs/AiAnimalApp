@@ -1,6 +1,7 @@
 package com.example.appprogrammingproject;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,19 +12,17 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
+
+import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
 
 public class Stress extends Activity {
 
@@ -34,11 +33,22 @@ public class Stress extends Activity {
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
 
+
+    private DatabaseHelper db;
+    private void createNote( int group, int select) {
+        db.insertNote(0, group, select);
+    }
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stress);
 
+
+        db = new DatabaseHelper(this);
+
+        List<Note> n = db.getAllNotes();
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -60,9 +70,7 @@ public class Stress extends Activity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
 
-
-
-
+        readData();
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
         one.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +94,12 @@ public class Stress extends Activity {
 
                 result.setNegativeButton("계속 하기", null);
 
+                final int[] select = {0};
 
                 a.setTitle("\uD83D\uDC18 어떤 동물과 여행을 함께 해야한다면, 어떤 동물과 함께 하겠습니까?").setSingleChoiceItems(item, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
-
+                        select[0] = i;
                         if (i == 0) {
 
                             result.setTitle("\uD83D\uDC35 원숭이를 선택한 당신!");
@@ -140,38 +148,13 @@ public class Stress extends Activity {
                 });
 
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        createNote( 1, select[0]);
 
                         result.show();
 
-
-
-                        try {
-                            FileInputStream inFs = new FileInputStream(datePath + "/ OneGetTime");//결과 값 넣기
-                            byte[] txt = new byte[3000];
-                            inFs.read(txt);
-                            String str = new String(txt);
-                            inFs.close();
-                            Toast.makeText(getApplicationContext(), "테스트 시간이 기록되었습니다.", Toast.LENGTH_LONG).show();
-
-                        } catch (IOException e) {
-
-                        }
-
-                        try {
-                            FileOutputStream outFs = new FileOutputStream(datePath + "/ OneGetTime");//읽기
-                            outFs.write(getTime.getBytes());
-                            outFs.close();
-                            one.setText("1.스트레스 원인\n(테스트한 날짜: " + getTime + ")");
-                            one.setBackgroundColor(Color.GRAY);
-                            one.setTextColor(Color.WHITE);
-
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
 
                     }
@@ -350,6 +333,29 @@ public class Stress extends Activity {
             }
         });
 
+
+    }
+
+    private void readData() {
+
+        List<Note> notes = db.getAllNotes();
+        for(Note n : notes){
+            String date = n.getTimestamp();
+
+            switch (n.getId()) {
+                case 0:
+                    one.setText("1.스트레스 원인\n(테스트한 날짜: " + date + ")");
+                    one.setBackgroundColor(Color.GRAY);
+                    one.setTextColor(Color.WHITE);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+        }
 
     }
 }
