@@ -21,7 +21,7 @@ import java.util.zip.Inflater;
 public class MainActivity extends AppCompatActivity {
 
     Button btn, choose, menu;
-    RadioButton sTest, chu, resultCompare, ai;
+    RadioButton sTest, cu, ai;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         ai = findViewById(R.id.ai);
         choose = findViewById(R.id.choose);
         sTest = findViewById(R.id.sTest);
-        chu = findViewById(R.id.chu);
+        cu = findViewById(R.id.cu);
         menu=findViewById(R.id.menu);
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -88,10 +88,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent ai = new Intent(getApplicationContext(), Ai.class);
                         startActivity(ai);
 
-                    } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
-                        //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
-                        Intent chu = new Intent(getApplicationContext(), Recommend.class);
-                        startActivity(chu);
+                    } else if (cu.isChecked()) { //심리테스트 결과를 통한 추천 목록
+                        Intent ch=new Intent(getApplicationContext(),Recommend.class);
+                        startActivity(ch);
                     }
             }
         });
