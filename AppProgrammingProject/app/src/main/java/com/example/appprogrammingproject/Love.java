@@ -5,13 +5,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
@@ -23,6 +28,10 @@ public class Love extends Activity {
     Date dateTime = new Date(now);
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
+    private DatabaseHelper db;
+    private void createNote( int group, int select) {
+        db.insertNote(0, group, select);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,7 +110,6 @@ public class Love extends Activity {
 
 
                         result.show();
-
 
 
                     }
@@ -192,7 +200,6 @@ public class Love extends Activity {
 
 
                         result.show();
-
 
 
                     }
@@ -286,7 +293,6 @@ public class Love extends Activity {
                         result.show();
 
 
-
                     }
                 });
                 a.setNegativeButton("취소", null);
@@ -377,7 +383,38 @@ public class Love extends Activity {
 
             }
         });
+    }
+        private void readData() {
 
+            List<Note> notes = db.getAllNotes();
+            for(Note n : notes){
+                String date = n.getTimestamp();
+
+                switch (n.getId()) {
+                    case 0:
+                        one.setText("1. \uD83D\uDC9C 나의 연애 스타일\n(테스트한 날짜: " + date + ")");
+                        one.setBackgroundColor(Color.GRAY);
+                        one.setTextColor(Color.WHITE);
+                        break;
+                    case 1:
+                        two.setText("2. \uD83D\uDDA4 내 연애방식의 장점과 단점\n(테스트한 날짜: " + date + ")");
+                        two.setBackgroundColor(Color.GRAY);
+                        two.setTextColor(Color.WHITE);
+                        break;
+                    case 2:
+                        three.setText("3. \uD83D\uDC99 원하는 결혼 스타일\n(테스트한 날짜: " + date + ")");
+                        three.setBackgroundColor(Color.GRAY);
+                        three.setTextColor(Color.WHITE);
+                        break;
+                    case 3:
+                        four.setText(" 4. ❤️이상형\n(테스트한 날짜: " + date + ")");
+                        four.setBackgroundColor(Color.GRAY);
+                        four.setTextColor(Color.WHITE);
+                        break;
+                }
+            }
 
     }
+
+
 }

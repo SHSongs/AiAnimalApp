@@ -5,15 +5,20 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
@@ -26,6 +31,11 @@ public class Study extends Activity {
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
 
+    private DatabaseHelper db;
+    private void createNote( int group, int select) {
+        db.insertNote(0, group, select);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +45,8 @@ public class Study extends Activity {
         two = findViewById(R.id.two);
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
+
+
 
 
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
@@ -283,6 +295,35 @@ public class Study extends Activity {
             }
         });
 
+
+    }
+
+    private void readData() {
+
+        List<Note> notes = db.getAllNotes();
+        for(Note n : notes){
+            String date = n.getTimestamp();
+
+            switch (n.getId()) {
+                case 0:
+                    one.setText("1. \uD83D\uDCDC  나의 공부 태도\n(테스트한 날짜: " + date + ")");
+                    one.setBackgroundColor(Color.GRAY);
+                    one.setTextColor(Color.WHITE);
+                    break;
+                case 1:
+                    two.setText("2. \uD83D\uDCD6 나의 계획성\n(테스트한 날짜: " + date + ")");
+                    two.setBackgroundColor(Color.GRAY);
+                    two.setTextColor(Color.WHITE);
+                    break;
+                case 2:
+                    three.setText("3. \uD83D\uDCD3 나의 공부 스타일\n(테스트한 날짜: " + date + ")");
+                    three.setBackgroundColor(Color.GRAY);
+                    three.setTextColor(Color.WHITE);
+                    break;
+                case 3:
+                    break;
+            }
+        }
 
     }
 }

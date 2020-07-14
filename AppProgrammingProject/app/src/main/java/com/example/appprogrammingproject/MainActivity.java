@@ -16,12 +16,52 @@ import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.appprogrammingproject.database.DatabaseHelper;
+import com.example.appprogrammingproject.database.model.Note;
+
+import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn, choose, menu;
     RadioButton sTest, cu, ai;
+    ArrayList<Note> notesList = new ArrayList<>();
+    private DatabaseHelper db;
+
+
+
+    private void createNote(int id, int group, int select) {
+        // inserting note in db and getting
+        // newly inserted note id
+        long gap = db.insertNote(id, group, select);
+
+        // get the newly inserted note from db
+        Note n = db.getNote(gap);
+
+        if (n != null) {
+            // adding new note to array list at 0 position
+
+            notesList.add(0, n);
+
+            // refreshing the list
+
+        }
+    }
+
+    /**
+     * Toggling list and empty notes view
+     */
+
+    private void deleteNote(int position) {
+        // deleting the note from db
+        db.deleteNote(notesList.get(position));
+
+        // removing the note from the list
+        notesList.remove(position);
+    }
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
@@ -76,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.show();;
             }
         });
+
+
 
 
         choose.setOnClickListener(new View.OnClickListener() {

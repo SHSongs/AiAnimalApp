@@ -24,6 +24,6 @@ public class Loading extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 12000);
+        }, 2000);
     }
 }
