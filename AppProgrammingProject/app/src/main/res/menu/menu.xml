@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/preResult1"
-        android:title="이전 결과 보기">
+        android:title="💻 도움말 보기">
     </item>
 
 

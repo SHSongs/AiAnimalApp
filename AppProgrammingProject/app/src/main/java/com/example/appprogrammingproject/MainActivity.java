@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         choose = findViewById(R.id.choose);
         sTest = findViewById(R.id.sTest);
         chu = findViewById(R.id.chu);
-        resultCompare = findViewById(R.id.resultCompare);
         menu=findViewById(R.id.menu);
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -82,20 +81,18 @@ public class MainActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sTest.isChecked()) {  //심리테스트<xml1>
-                    Intent st = new Intent(getApplicationContext(), Stest.class);
-                    startActivity(st);
-                } else if (ai.isChecked()) {  //얼굴 상 알아보기 클릭
-                    Intent st = new Intent(getApplicationContext(), Ai.class);
-                    startActivity(st);
+                    if (sTest.isChecked()) {  //심리테스트<xml1>
+                        Intent st = new Intent(getApplicationContext(), Stest.class);
+                        startActivity(st);
+                    } else if (ai.isChecked()) {  //얼굴 상 알아보기 클릭
+                        Intent ai = new Intent(getApplicationContext(), Ai.class);
+                        startActivity(ai);
 
-                } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
-                    //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
-                } else if (resultCompare.isChecked()) {  //친구와 결과 비교
-                    //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
-                }
-
-
+                    } else if (chu.isChecked()) { //심리테스트 결과를 통한 추천 목록
+                        //성격, 심리테스트를 한번도 실행하지 않았다면 성격, 심리테스트 권유 창 뜨기(dialog)
+                        Intent chu = new Intent(getApplicationContext(), Recommend.class);
+                        startActivity(chu);
+                    }
             }
         });
 

@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/one"
         android:background="@drawable/button2"
-        android:text="1. 나의 공부 태도"
+        android:text="1. 📜  나의 공부 태도"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 나의 계획성"
+        android:text="2. 📖 나의 계획성"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 나의 공부 스타일"
+        android:text="3. 📓 나의 공부 스타일"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"

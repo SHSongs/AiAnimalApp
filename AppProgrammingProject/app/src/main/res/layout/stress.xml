@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/one"
         android:background="@drawable/button2"
-        android:text="1. 스트레스 원인"
+        android:text="1. 😞 스트레스 원인"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 남들에게 보이는 나 "
+        android:text="2. 👧 남들에게 보이는 나 "
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 나의 성격"
+        android:text="3. 👦 나의 성격"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"

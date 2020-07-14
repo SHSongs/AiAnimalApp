@@ -20,7 +20,7 @@
     <Button
         android:id="@+id/one"
         android:background="@drawable/button2"
-        android:text="1. 나의 연애 스타일"
+        android:text="1. 💜 나의 연애 스타일"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -34,7 +34,7 @@
     <Button
         android:id="@+id/two"
         android:background="@drawable/button2"
-        android:text="2. 내 연애방식의 장점과 단점"
+        android:text="2. 🖤 내 연애방식의 장점과 단점"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/three"
         android:background="@drawable/button2"
-        android:text="3. 원하는 결혼 스타일"
+        android:text="3. 💙 원하는 결혼 스타일"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"
@@ -62,7 +62,7 @@
     <Button
         android:id="@+id/four"
         android:background="@drawable/button2"
-        android:text="4. 이상형"
+        android:text=" 4. ❤️이상형"
         android:textColor="#119982"
         android:textStyle="bold"
         android:textSize="18dp"

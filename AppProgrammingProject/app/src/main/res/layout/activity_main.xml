@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="5"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
 
             <TextView
@@ -79,7 +79,7 @@
                 android:text="무엇을 할까요?"
                 android:textSize="30dp"
                 android:textStyle="bold"
-                android:layout_margin="11dp"
+                android:layout_margin="20dp"
                 android:textColor="#119982"></TextView>
 
             <RadioGroup
@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="AI가 판단한 너"
+                    android:text="😏 AI가 판단한 너"
                     ></RadioButton>
 
 
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="심리테스트"
+                    android:text="👩‍❤️‍👨 심리테스트"
                     ></RadioButton>
 
                 <RadioButton
@@ -114,18 +114,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="나에게 꼭 맞는 추천"></RadioButton>
+                    android:text="💌 나에게 꼭 맞는 추천"></RadioButton>
 
 
 
 
-                <RadioButton
-                    android:textSize="18dp"
-                    android:id="@+id/resultCompare"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="친구와 결과 비교하기"></RadioButton>
+
 
 
 
@@ -138,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textStyle="bold"
-                android:layout_margin="10dp"
+                android:layout_margin="15dp"
                 android:textSize="20dp"
                 android:textColor="#FFFFFF"
                 android:text="골랐어요"></Button>

@@ -37,6 +37,7 @@
         <activity android:name=".Love" />
         <activity android:name=".Stress" />
         <activity android:name=".Study" />
+        <activity android:name=".Recommend"></activity>
     </application>
 
 </manifest>

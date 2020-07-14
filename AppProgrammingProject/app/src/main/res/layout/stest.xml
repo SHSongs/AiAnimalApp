@@ -27,7 +27,7 @@
         android:layout_margin="5dp"
         android:layout_weight="2"
         android:background="@drawable/button"
-        android:text="공부"
+        android:text="📚 공부"
         android:textColor="#FFFF"
         android:textSize="22dp"
         android:textStyle="bold"></Button>
@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/stress"
         android:background="@drawable/button"
-        android:text="심리"
+        android:text="🥰 심리"
         android:textColor="#FFFF"
         android:textStyle="bold"
         android:textSize="22dp"
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/love"
         android:background="@drawable/button"
-        android:text="사랑"
+        android:text="❤️ 사랑"
         android:textColor="#FFFF"
         android:textStyle="bold"
         android:textSize="22dp"
@@ -60,7 +60,7 @@
     <Button
         android:id="@+id/friend"
         android:background="@drawable/button"
-        android:text="인간관계"
+        android:text="🙍 인간관계"
         android:textColor="#FFFF"
         android:textStyle="bold"
         android:textSize="22dp"

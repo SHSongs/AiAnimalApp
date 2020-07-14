@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="공부 방법 추천"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/study"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아직 심리테스트 결과가 충분하지 않네요"
+                android:layout_margin="50dp"
+                android:gravity="center"></TextView>
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="내 마음을 잘 다스리는 방법 추천"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/stress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아직 심리테스트 결과가 충분하지 않네요"
+                android:layout_margin="50dp"
+                android:gravity="center"></TextView>
+
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="연애 방법 추천"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/love"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아직 심리테스트 결과가 충분하지 않네요"
+                android:layout_margin="50dp"
+                android:gravity="center"></TextView>
+
+            <TextView
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/button"
+                android:gravity="center"
+                android:text="인간관계 관리 방법 추천"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/friend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아직 심리테스트 결과가 충분하지 않네요"
+                android:layout_margin="50dp"
+                android:gravity="center"></TextView>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
