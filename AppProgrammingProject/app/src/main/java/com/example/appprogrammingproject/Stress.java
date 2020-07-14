@@ -35,8 +35,9 @@ public class Stress extends Activity {
 
 
     private DatabaseHelper db;
-    private void createNote( int group, int select) {
-        db.insertNote(0, group, select);
+    private void createNote( int group,int id, int select) {
+        db.insertNote(id, group, select);
+        readData();
     }
 
 
@@ -151,7 +152,7 @@ public class Stress extends Activity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        createNote( 1, select[0]);
+                        createNote( 1,0, select[0]);
 
                         result.show();
 
@@ -341,20 +342,27 @@ public class Stress extends Activity {
         List<Note> notes = db.getAllNotes();
         for(Note n : notes){
             String date = n.getTimestamp();
+            int select = n.getSelectitem();
+            Button btn = null;
 
             switch (n.getId()) {
                 case 0:
-                    one.setText("1.스트레스 원인\n(테스트한 날짜: " + date + ")");
-                    one.setBackgroundColor(Color.GRAY);
-                    one.setTextColor(Color.WHITE);
+                    btn = one;
                     break;
                 case 1:
+                    btn = two;
                     break;
                 case 2:
+                    btn = three;
                     break;
                 case 3:
+                    btn = four;
                     break;
             }
+            btn.setText("1.스트레스 원인"+select+"\n(테스트한 날짜: " + date + ")");
+
+            btn.setBackgroundColor(Color.GRAY);
+            btn.setTextColor(Color.WHITE);
         }
 
     }
