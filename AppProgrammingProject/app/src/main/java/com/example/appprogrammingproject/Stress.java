@@ -70,8 +70,6 @@ public class Stress extends Activity {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
 
-
-
         readData();
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
         one.setOnClickListener(new View.OnClickListener() {
@@ -340,8 +338,24 @@ public class Stress extends Activity {
 
     private void readData() {
 
-        one.setText("1.스트레스 원인\n(테스트한 날짜: " + getTime + ")");
-        one.setBackgroundColor(Color.GRAY);
-        one.setTextColor(Color.WHITE);
+        List<Note> notes = db.getAllNotes();
+        for(Note n : notes){
+            String date = n.getTimestamp();
+
+            switch (n.getId()) {
+                case 0:
+                    one.setText("1.스트레스 원인\n(테스트한 날짜: " + date + ")");
+                    one.setBackgroundColor(Color.GRAY);
+                    one.setTextColor(Color.WHITE);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+            }
+        }
+
     }
 }
