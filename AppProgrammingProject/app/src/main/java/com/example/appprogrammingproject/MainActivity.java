@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -31,36 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void createNote(int id, int group, int select) {
-        // inserting note in db and getting
-        // newly inserted note id
-        long gap = db.insertNote(id, group, select);
-
-        // get the newly inserted note from db
-        Note n = db.getNote(gap);
-
-        if (n != null) {
-            // adding new note to array list at 0 position
-
-            notesList.add(0, n);
-
-            // refreshing the list
-
-        }
-    }
-
-    /**
-     * Toggling list and empty notes view
-     */
-
-    private void deleteNote(int position) {
-        // deleting the note from db
-        db.deleteNote(notesList.get(position));
-
-        // removing the note from the list
-        notesList.remove(position);
-    }
-
 
 
     @Override
@@ -72,24 +43,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public boolean onCreateOptionMenu(Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu,menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-
-        switch (item.getItemId())
-        {
-            case R.id.preResult1:
-
-
-
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
+//    public boolean onCreateOptionMenu(Menu menu){
+//        super.onCreateOptionsMenu(menu);
+//        MenuInflater inflater=getMenuInflater();
+//        inflater.inflate(R.menu.menu,menu);
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem item){
+//
+//
+//                AlertDialog.Builder al=new AlertDialog.Builder(this);
+//                al.setTitle("이 앱을 즐겨주세요!");
+//                al.setMessage("\uD83D\uDE0B FUNA는 심리테스트와 AI 측정을 할 수 있습니다. 심리테스트를 한 뒤에는, 심리테스트의 결과를 이용하여 최종적인 추천 결과를 얻을 수 있습니다. 충분한 심리테스트의 결과가 모이지 않으면," +
+//                        "최종 결과를 얻을 수 없으니 심리테스트를 즐겁게 즐겨주세요!!");
+//
+//                al.setPositiveButton("확인", null);
+//                al.setNegativeButton("취소",null);
+//
+//                al.show();
+//
+//                return true;
+//
+//
+//
+//
+//
+//
+//    }
 
 
     @Override
@@ -111,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
                 MenuInflater inflater=popupMenu.getMenuInflater();
                 inflater.inflate(R.menu.menu,popupMenu.getMenu());
-                popupMenu.show();;
+                popupMenu.show();
             }
         });
+
+
 
 
 

@@ -9,41 +9,49 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#F9F8F8">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/button"
+                android:background="#119982"
                 android:gravity="center"
-                android:text="공부 방법 추천"
+                android:text="🎒 공부 방법 추천"
                 android:textColor="@android:color/white"
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:background="@drawable/button2">
 
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" 🎒"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="50dp"></TextView>
 
                 <TextView
                     android:id="@+id/study"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="50dp"
+                    android:layout_margin="20dp"
                     android:gravity="left"
-                    android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+                    android:hint="아직 심리테스트 결과가 충분하지 않네요"
+                    ></TextView>
+
+                <Button
+                    android:id="@+id/studyBtn"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:text="  공부 심리테스트 하러가기  "
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="7dp"></Button>
 
 
             </LinearLayout>
@@ -55,34 +63,41 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/button"
+                android:background="#119982"
                 android:gravity="center"
-                android:text="내 마음을 잘 다스리는 방법 추천"
+                android:text="🙇 내 마음을 잘 다스리는 방법 추천"
                 android:textColor="@android:color/white"
-                android:textSize="25dp"
+                android:textSize="24dp"
                 android:textStyle="bold"></TextView>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/button2"
+                android:layout_margin="20dp">
 
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" 🙇"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="50dp"></TextView>
 
                 <TextView
                     android:id="@+id/stress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="50dp"
+                    android:layout_margin="20dp"
                     android:gravity="left"
                     android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+                <Button
+                    android:id="@+id/stressBtn"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:text="  심리테스트 하러가기  "
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="7dp"></Button>
 
             </LinearLayout>
 
@@ -94,33 +109,41 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/button"
+                android:background="#119982"
                 android:gravity="center"
-                android:text="연애 방법 추천"
+                android:text="💑 연애 방법 추천"
                 android:textColor="@android:color/white"
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:background="@drawable/button2">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text=" 💑"
-                    android:textSize="50dp"></TextView>
 
                 <TextView
                     android:id="@+id/love"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="50dp"
+                    android:layout_margin="20dp"
                     android:gravity="left"
                     android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+                <Button
+                    android:id="@+id/loveBtn"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:text="  연애 심리테스트 하러가기  "
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="7dp"></Button>
 
             </LinearLayout>
             <TextView
@@ -128,34 +151,41 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="@drawable/button"
+                android:background="#119982"
                 android:gravity="center"
-                android:text="인간관계 관리 방법 추천"
+                android:text="👪 인간관계 관리 방법 추천"
                 android:textColor="@android:color/white"
                 android:textSize="25dp"
                 android:textStyle="bold"></TextView>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/button2"
+                android:orientation="vertical">
 
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" 👪"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="50dp"></TextView>
 
                 <TextView
                     android:id="@+id/friend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="50dp"
-                    android:gravity="center"
+                    android:layout_margin="20dp"
+                    android:gravity="left"
                     android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
+                <Button
+                    android:id="@+id/friendBtn"
+                    android:background="@drawable/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:text="  인간관계 심리테스트 하러가기  "
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_margin="7dp"></Button>
 
             </LinearLayout>
 

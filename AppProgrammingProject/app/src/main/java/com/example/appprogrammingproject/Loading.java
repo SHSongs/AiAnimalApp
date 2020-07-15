@@ -7,6 +7,8 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
+//로딩화면
+
 public class Loading extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +26,6 @@ public class Loading extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 3000);
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 public class Recommend extends Activity {
 
     TextView study, stress, love, friend;
+    Button studyBtn,stressBtn,loveBtn,friendBtn;
 
     private DatabaseHelper db;
 
@@ -42,9 +44,47 @@ public class Recommend extends Activity {
         love = findViewById(R.id.love);
         friend = findViewById(R.id.friend);
 
+        studyBtn=findViewById(R.id.studyBtn);
+        stressBtn=findViewById(R.id.stressBtn);
+        loveBtn=findViewById(R.id.loveBtn);
+        friendBtn=findViewById(R.id.friendBtn);
+
+
         String getSelet = getIntent().getStringExtra("select");
 
         readData();
+
+        studyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),Study.class);
+                startActivity(intent);
+            }
+        });
+
+        loveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),Love.class);
+                startActivity(intent);
+            }
+        });
+
+        friendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),Friend.class);
+                startActivity(intent);
+            }
+        });
+
+        stressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),Stress.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -60,10 +100,11 @@ public class Recommend extends Activity {
                     switch (n.getId()) {
                         case 0://공부 심리테스트 중 처음 심리테스트 선택
 
-                            study.setTextSize(27);
-                            stress.setTextSize(27);
-                            love.setTextSize(27);
-                            friend.setTextSize(27);
+                            study.setTextSize(20);
+                            stress.setTextSize(20);
+                            love.setTextSize(20);
+                            friend.setTextSize(20);
+
 
                             switch (n.getSelectitem()) {
                                 case 0:
@@ -119,8 +160,6 @@ public class Recommend extends Activity {
                 case 1://심리테스트 심리를 선택했을 때
                     switch (n.getId()) {
                         case 0://공부 심리테스트 중 처음 심리테스트 선택
-
-                            study.setTextSize(27);
 
                             switch (n.getSelectitem()) {
                                 case 0:
@@ -185,8 +224,6 @@ public class Recommend extends Activity {
                 case 2://심리테스트 사랑을 선택했을 때
                     switch (n.getId()) {
                         case 0://공부 심리테스트 중 처음 심리테스트 선택
-
-                            love.setTextSize(27);
 
                             switch (n.getSelectitem()) {
                                 case 0:
@@ -273,8 +310,6 @@ public class Recommend extends Activity {
                 case 3://심리테스트 인간관계를 선택했을 때
                     switch (n.getId()) {
                         case 0://공부 심리테스트 중 처음 심리테스트 선택
-
-                            friend.setTextSize(27);
 
                             switch (n.getSelectitem()) {
                                 case 0:
