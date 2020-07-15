@@ -12,7 +12,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -42,15 +42,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="50dp"
-                    android:gravity="center"
-                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+                    android:gravity="left"
+                    android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+
 
             </LinearLayout>
 
 
 
             <TextView
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -80,8 +81,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="50dp"
-                    android:gravity="center"
-                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+                    android:gravity="left"
+                    android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
 
             </LinearLayout>
 
@@ -89,7 +90,7 @@
 
 
             <TextView
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -118,12 +119,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="50dp"
-                    android:gravity="center"
-                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+                    android:gravity="left"
+                    android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
 
             </LinearLayout>
             <TextView
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
@@ -154,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="50dp"
                     android:gravity="center"
-                    android:text="아직 심리테스트 결과가 충분하지 않네요"></TextView>
+                    android:hint="아직 심리테스트 결과가 충분하지 않네요"></TextView>
 
             </LinearLayout>
 

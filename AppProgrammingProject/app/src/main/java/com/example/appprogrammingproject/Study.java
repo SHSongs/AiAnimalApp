@@ -34,11 +34,11 @@ public class Study extends Activity {
     String getTime = simpleDate.format(dateTime);
 
     private DatabaseHelper db;
-    private void createNote( int group1,int id1, int select1) {
-        db.insertNote(id1, group1, select1);
+    private void createNote( int group,int id, int select) {
+        db.insertNote(id, group, select);
         readData();
     }
-    final int[] select1 = {0};
+    final int[] select = {0};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        select1[0] = i;
+                        select[0] = i;
 
                         if (i == 0) {
 
@@ -123,7 +123,7 @@ public class Study extends Activity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        createNote(0,0,select1[0]);
+                        createNote(0,0,select[0]);
 
                         result.show();
 
@@ -166,7 +166,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        select1[0] = i;
+                        select[0] = i;
 
                         if (i == 0) {
 
@@ -215,7 +215,7 @@ public class Study extends Activity {
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        createNote(0,1,select1[0]);
+                        createNote(0,1,select[0]);
 
                         result.show();
 
@@ -255,7 +255,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        select1[0] = i;
+                        select[0] = i;
 
                         if (i == 0) {
 
@@ -292,7 +292,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        createNote(0,2,select1[0]);
+                        createNote(0,2,select[0]);
 
 
                         result.show();

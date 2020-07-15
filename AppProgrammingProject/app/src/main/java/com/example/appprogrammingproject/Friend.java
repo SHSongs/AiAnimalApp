@@ -302,6 +302,9 @@ public class Friend extends Activity {
             int select = n.getSelectitem();
             Button btn = null;
 
+            Intent intent=new Intent(getApplicationContext(),Recommend.class);
+            intent.putExtra("select","select");
+
             switch (n.getId()) {
                 case 0:
                     btn = one;
@@ -313,7 +316,7 @@ public class Friend extends Activity {
                     break;
                 case 2:
                     btn = three;
-                    three.setText("33. \uD83D\uDE4B 내가 인간관계를 만들어가는 방법" + "\n(테스트한 날짜: " + date + ")");
+                    three.setText("3. \uD83D\uDE4B 내가 인간관계를 만들어가는 방법" + "\n(테스트한 날짜: " + date + ")");
                     break;
 
             }
