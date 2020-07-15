@@ -34,7 +34,6 @@
         <activity android:name=".Love" />
         <activity android:name=".Stress" />
         <activity android:name=".Study" />
-        <activity android:name=".preResult" />
         <activity android:name=".Recommend" />
 
     </application>

@@ -83,9 +83,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.preResult1:
-                Intent pre=new Intent(this,preResult.class);
-                startActivity(pre);
-                Toast.makeText(getApplicationContext(),"이전 결과 보기",Toast.LENGTH_SHORT).show();
+
 
 
         }
