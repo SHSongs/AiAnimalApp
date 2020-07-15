@@ -314,8 +314,7 @@ public class Study extends Activity {
 
     private void readData() {
 
-        List<Note> notes = db.getAllNotes();
-        Collections.reverse(notes); //최근 시간을 보여준다.
+        List<Note> notes = db.getGroupNotes(0);
         for(Note n : notes){
             String date = n.getTimestamp();
             int select = n.getSelectitem();
