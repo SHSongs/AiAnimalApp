@@ -15,6 +15,7 @@ import com.example.appprogrammingproject.database.DatabaseHelper;
 import com.example.appprogrammingproject.database.model.Note;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -28,21 +29,30 @@ public class Love extends Activity {
     Date dateTime = new Date(now);
     SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String getTime = simpleDate.format(dateTime);
+
     private DatabaseHelper db;
-    private void createNote( int group, int select) {
-        db.insertNote(0, group, select);
+    private void createNote( int group,int id, int select) {
+        db.insertNote(id, group, select);
+        readData();
     }
+    final int[] select = {0};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.love);
 
+        db = new DatabaseHelper(this);
+
+        List<Note> n = db.getAllNotes();
+
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
 
+
+        readData();
 
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
         one.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +79,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select[0]=i;
 
                         if (i == 0) {
 
@@ -108,6 +119,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        createNote(2,0,select[0]);
 
                         result.show();
 
@@ -148,6 +160,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select[0]=i;
 
                         if (i == 0) {
 
@@ -198,7 +211,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-
+                        createNote(2,1,select[0]);
                         result.show();
 
 
@@ -238,6 +251,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select[0]=i;
 
                         if (i == 0) {
 
@@ -288,7 +302,7 @@ public class Love extends Activity {
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        createNote(2,2,select[0]);
 
                         result.show();
 
@@ -328,6 +342,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select[0]=i;
 
                         if (i == 0) {
 
@@ -370,7 +385,7 @@ public class Love extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-
+                        createNote(2,3,select[0]);
                         result.show();
 
 
@@ -384,37 +399,43 @@ public class Love extends Activity {
             }
         });
     }
-        private void readData() {
+    private void readData() {
 
-            List<Note> notes = db.getAllNotes();
-            for(Note n : notes){
-                String date = n.getTimestamp();
+        List<Note> notes = db.getAllNotes();
+        Collections.reverse(notes); //최근 시간을 보여준다.
+        for(Note n : notes){
+            String date = n.getTimestamp();
+            int select = n.getSelectitem();
+            Button btn = null;
 
-                switch (n.getId()) {
-                    case 0:
-                        one.setText("1. \uD83D\uDC9C 나의 연애 스타일\n(테스트한 날짜: " + date + ")");
-                        one.setBackgroundColor(Color.GRAY);
-                        one.setTextColor(Color.WHITE);
-                        break;
-                    case 1:
-                        two.setText("2. \uD83D\uDDA4 내 연애방식의 장점과 단점\n(테스트한 날짜: " + date + ")");
-                        two.setBackgroundColor(Color.GRAY);
-                        two.setTextColor(Color.WHITE);
-                        break;
-                    case 2:
-                        three.setText("3. \uD83D\uDC99 원하는 결혼 스타일\n(테스트한 날짜: " + date + ")");
-                        three.setBackgroundColor(Color.GRAY);
-                        three.setTextColor(Color.WHITE);
-                        break;
-                    case 3:
-                        four.setText(" 4. ❤️이상형\n(테스트한 날짜: " + date + ")");
-                        four.setBackgroundColor(Color.GRAY);
-                        four.setTextColor(Color.WHITE);
-                        break;
-                }
+            switch (n.getId()) {
+                case 0:
+                    btn=one;
+                    one.setText("1. \uD83D\uDC9C 나의 연애 스타일"+"\n(테스트한 날짜: " + date + ")"); //버튼의 텍스트에 테스트한 날짜를 뒤에 추가.
+                    break;
+                case 1:
+                    btn=two;
+                    two.setText("2. \uD83D\uDDA4 내 연애방식의 장점과 단점"+"\n(테스트한 날짜: " + date + ")");
+                    break;
+                case 2:
+                    btn=three;
+                    three.setText("3. \uD83D\uDC99 원하는 결혼 스타일"+"\n(테스트한 날짜: " + date + ")");
+                    break;
+                case 3:
+                    btn = four;
+                    four.setText("4. ❤️이상형"+"\n(테스트한 날짜: " + date + ")");
+                    break;
             }
 
-    }
 
+            try {
+                btn.setBackgroundColor(Color.GRAY); //이미 끝낸 심리테스트는 배경을 회색과 폰트는 흰색으로 바꿈.
+                btn.setTextColor(Color.WHITE);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 }

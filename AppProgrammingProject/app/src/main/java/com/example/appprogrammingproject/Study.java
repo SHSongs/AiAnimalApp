@@ -1,5 +1,6 @@
 package com.example.appprogrammingproject;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,6 +18,7 @@ import com.example.appprogrammingproject.database.model.Note;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -32,14 +34,20 @@ public class Study extends Activity {
     String getTime = simpleDate.format(dateTime);
 
     private DatabaseHelper db;
-    private void createNote( int group, int select) {
-        db.insertNote(0, group, select);
+    private void createNote( int group1,int id1, int select1) {
+        db.insertNote(id1, group1, select1);
+        readData();
     }
+    final int[] select1 = {0};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.study);
+
+        db = new DatabaseHelper(this);
+
+        List<Note> n = db.getAllNotes();
 
         one = findViewById(R.id.one);
         two = findViewById(R.id.two);
@@ -47,7 +55,7 @@ public class Study extends Activity {
         four = findViewById(R.id.four);
 
 
-
+        readData();
 
         //버튼을 눌렀을때 dialog 띄운 후에 심리테스트 진행
         one.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +83,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select1[0] = i;
 
                         if (i == 0) {
 
@@ -111,9 +120,10 @@ public class Study extends Activity {
                 });
 
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        createNote(0,0,select1[0]);
 
                         result.show();
 
@@ -156,6 +166,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select1[0] = i;
 
                         if (i == 0) {
 
@@ -204,7 +215,7 @@ public class Study extends Activity {
                 a.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        createNote(0,1,select1[0]);
 
                         result.show();
 
@@ -244,6 +255,7 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        select1[0] = i;
 
                         if (i == 0) {
 
@@ -280,6 +292,8 @@ public class Study extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        createNote(0,2,select1[0]);
+
 
                         result.show();
 
@@ -301,28 +315,39 @@ public class Study extends Activity {
     private void readData() {
 
         List<Note> notes = db.getAllNotes();
+        Collections.reverse(notes); //최근 시간을 보여준다.
         for(Note n : notes){
             String date = n.getTimestamp();
+            int select = n.getSelectitem();
+            Button btn = null;
+
+
 
             switch (n.getId()) {
                 case 0:
-                    one.setText("1. \uD83D\uDCDC  나의 공부 태도\n(테스트한 날짜: " + date + ")");
-                    one.setBackgroundColor(Color.GRAY);
-                    one.setTextColor(Color.WHITE);
+                    btn=one;
+                    one.setText("1. \uD83D\uDCDC  나의 공부 태도"+"\n(테스트한 날짜: " + date + ")"); //버튼의 텍스트에 테스트한 날짜를 뒤에 추가.
                     break;
                 case 1:
-                    two.setText("2. \uD83D\uDCD6 나의 계획성\n(테스트한 날짜: " + date + ")");
-                    two.setBackgroundColor(Color.GRAY);
-                    two.setTextColor(Color.WHITE);
+                    btn=two;
+                    two.setText("2. \uD83D\uDCD6 나의 계획성"+"\n(테스트한 날짜: " + date + ")");
                     break;
                 case 2:
-                    three.setText("3. \uD83D\uDCD3 나의 공부 스타일\n(테스트한 날짜: " + date + ")");
-                    three.setBackgroundColor(Color.GRAY);
-                    three.setTextColor(Color.WHITE);
+                    btn=three;
+                    three.setText("3. \uD83D\uDCD3 나의 공부 스타일"+"\n(테스트한 날짜: " + date + ")");
                     break;
                 case 3:
+                    btn = four;
                     break;
             }
+
+            try {
+                btn.setBackgroundColor(Color.GRAY); //이미 끝낸 심리테스트는 배경을 회색과 폰트는 흰색으로 바꿈.
+                btn.setTextColor(Color.WHITE);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
 
     }

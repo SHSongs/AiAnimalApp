@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -58,19 +60,6 @@ public class Stress extends Activity {
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
 
-
-        final String datePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/dateFolder";
-        final File date = new File(datePath);
-
-        date.mkdir();
-
-        final String resultPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/resultFolder";
-        final File result = new File(resultPath);
-
-        result.mkdir();
-
-        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
 
 
         readData();
@@ -154,7 +143,7 @@ public class Stress extends Activity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        createNote( 1,0, select[0]);
+                        createNote( 1,0, select[0]);    //그룹: 심리테스트 분야 중 2번째, id: 각 분야에서 문제의 번호(0부터 시작)
 
                         result.show();
 
@@ -245,6 +234,7 @@ public class Stress extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        createNote( 1,1, select[0]);
 
                         result.show();
 
@@ -289,7 +279,7 @@ public class Stress extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-
+                        select[0]=i;
 
                         if (i == 0) {
 
@@ -329,6 +319,8 @@ public class Stress extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        createNote( 1,2, select[0]);
+
                         result.show();
 
 
@@ -349,6 +341,7 @@ public class Stress extends Activity {
     private void readData() {
 
         List<Note> notes = db.getAllNotes();
+        Collections.reverse(notes); //최근 시간을 보여준다.
         for(Note n : notes){
             String date = n.getTimestamp();
             int select = n.getSelectitem();
@@ -356,23 +349,26 @@ public class Stress extends Activity {
 
             switch (n.getId()) {
                 case 0:
-
-                    btn = one;
+                    btn=one;
+                    one.setText("1. \uD83D\uDE1E 스트레스 원인"+"\n(테스트한 날짜: " + date + ")"); //버튼의 텍스트에 테스트한 날짜를 뒤에 추가.
                     break;
                 case 1:
-                    btn = two;
+                    btn=two;
+                    two.setText("2. \uD83D\uDC67 남들에게 보이는 나 "+"\n(테스트한 날짜: " + date + ")");
                     break;
                 case 2:
-                    btn = three;
+                    btn=three;
+                    three.setText("3. \uD83D\uDC66 나의 성격"+"\n(테스트한 날짜: " + date + ")");
                     break;
-                case 3:
-                    btn = four;
-                    break;
-            }
-            btn.setText("1.스트레스 원인"+select+"\n(테스트한 날짜: " + date + ")");
 
-            btn.setBackgroundColor(Color.GRAY);
-            btn.setTextColor(Color.WHITE);
+            }
+
+            try {
+                btn.setBackgroundColor(Color.GRAY); //이미 끝낸 심리테스트는 배경을 회색과 폰트는 흰색으로 바꿈.
+                btn.setTextColor(Color.WHITE);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
     }
