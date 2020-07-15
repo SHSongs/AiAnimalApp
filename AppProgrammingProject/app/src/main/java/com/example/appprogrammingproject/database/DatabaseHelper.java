@@ -87,7 +87,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return note;
     }
+    public List<Note> getGroupNotes(int group){
+        List<Note> notes = new ArrayList<>();
 
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Note.TABLE_NAME +
+                " WHERE " + Note.COLUMN_GROUPITEM +"="+ group
+                +" ORDER BY " +
+                Note.COLUMN_TIMESTAMP + " ASC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Note note = new Note();
+                note.setId(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
+                note.setGroupitem(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_GROUPITEM)));
+                note.setSelectitem(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_SELECTITEM)));
+                note.setTimestamp(cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
+
+                notes.add(note);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+        return notes;
+    }
     public List<Note> getAllNotes() {
         List<Note> notes = new ArrayList<>();
 
