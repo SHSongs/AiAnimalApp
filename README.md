@@ -1,5 +1,12 @@
 # 잡다한 테스트 기계
 
+## Contributor
+
+[111111022](https://github.com/111111022) 심리테스트 제작
+[SHSongs](https://github.com/SHSongs) AI 모델 제작
+
+
+## 내부 사진
 ![메인메뉴](https://user-images.githubusercontent.com/48788892/99246517-c3a41980-2848-11eb-9df4-0b136cbc3484.PNG)
 
 
