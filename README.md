@@ -8,6 +8,10 @@
 ## App Summary
 간단한 심리 테스트와 AI를 활용한 Image Classification
 
+## Flow chart
+![flowchart](https://user-images.githubusercontent.com/48788892/100417758-f362e500-30c4-11eb-9029-6f2ebc8cfbd9.png)
+
+
 ## 내부 사진
 ![메인메뉴](https://user-images.githubusercontent.com/48788892/99246517-c3a41980-2848-11eb-9df4-0b136cbc3484.PNG)
 
